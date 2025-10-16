@@ -4,26 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Portfolio - Eric Kimathi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <nav>
+    <nav class="navbar">
       <table width="100%">
         <tr>
           <td width="30%">
-            <h2>Eric</h2>
+            <h2 class="logo">Eric</h2>
           </td>
           <td align="right">
-            <table>
+            <table class="nav-links">
               <tr>
-                <td><a href="#home">Home</a></td>
+                <td><a href="#home" class="nav-link">Home</a></td>
                 <td>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
-                <td><a href="#about">About</a></td>
+                <td><a href="#about" class="nav-link">About</a></td>
                 <td>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
-                <td><a href="#work">Work</a></td>
+                <td><a href="#work" class="nav-link">Work</a></td>
                 <td>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
-                <td><a href="#resume">Resume</a></td>
+                <td><a href="#resume" class="nav-link">Resume</a></td>
                 <td>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
-                <td><a href="#contact">Contact</a></td>
+                <td><a href="#contact" class="nav-link">Contact</a></td>
               </tr>
             </table>
           </td>
@@ -31,41 +38,155 @@
       </table>
     </nav>
 
-    <header id="home">
-      <table width="100%" border="1" cellpadding="20">
+    <header id="home" class="hero">
+      <table width="100%" border="0" cellpadding="20">
         <tr>
           <td align="center">
-            <h1>Hello, I'm, Eric Kimathi</h1>
-            <p>Web Developer | Designer | Problem Solver</p>
-            <video width="600" controls>
-              <source src="intro-video.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            <h1 class="hero-title">Hello, I'm Eric Kimathi</h1>
+            <p class="hero-subtitle">
+              Web Developer | Designer | Problem Solver
+            </p>
           </td>
         </tr>
       </table>
     </header>
 
-    <section id="about">
-      <h2>About Me</h2>
+    <section class="brands">
+      <div class="section__inner">
+        <h2>Technologies & Tools I Work With</h2>
+        <ul class="brands__logos">
+          <li>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="60"
+              height="60"
+              viewBox="0 0 32 32"
+            >
+              <path
+                fill="#E44D26"
+                d="M5.902 27.201L3.655 2h24.69l-2.25 25.197L15.985 30 5.902 27.201z"
+              />
+              <path
+                fill="#F16529"
+                d="M16 27.858l8.17-2.265 1.922-21.532H16v23.797z"
+              />
+              <path
+                fill="#EBEBEB"
+                d="M16 13.407h-4.09l-.282-3.165H16V7.151H8.25l.074.83.759 8.517H16v-3.091zm0 8.027l-.014.004-3.442-.929-.22-2.465H9.221l.433 4.852 6.332 1.758.014-.004v-3.216z"
+              />
+              <path
+                fill="#FFF"
+                d="M15.989 13.407v3.091h3.806l-.358 4.009-3.448.93v3.216l6.337-1.757.046-.522.726-8.137.076-.83h-7.185zm0-6.256v3.091h7.466l.062-.694.141-1.567.074-.83h-7.743z"
+              />
+            </svg>
+            <span>HTML5</span>
+          </li>
+          <li>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="60"
+              height="60"
+              viewBox="0 0 32 32"
+            >
+              <path
+                fill="#1572B6"
+                d="M5.902 27.201L3.656 2h24.688l-2.249 25.197L15.985 30 5.902 27.201z"
+              />
+              <path
+                fill="#33A9DC"
+                d="M16 27.858l8.17-2.265 1.922-21.532H16v23.797z"
+              />
+              <path
+                fill="#FFF"
+                d="M16 13.191h4.09l.282-3.165H16V6.935h7.75l-.074.829-.759 8.518H16v-3.091z"
+              />
+              <path
+                fill="#EBEBEB"
+                d="M16.019 21.218l-.014.004-3.442-.93-.22-2.465H9.24l.433 4.853 6.331 1.758.015-.004v-3.216zm-.014-6.027H12.27l-.278-3.091h3.964v-3.091H8.881l.073.829.759 8.517h6.292v-3.164z"
+              />
+            </svg>
+            <span>CSS3</span>
+          </li>
+          <li>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="60"
+              height="60"
+              viewBox="0 0 32 32"
+            >
+              <path fill="#F7DF1E" d="M2 2h28v28H2z" />
+              <path
+                d="M20.809 23.875a3.6 3.6 0 0 0 2.619 1.17c1.074 0 1.763-.49 1.763-1.17 0-.784-.687-1.07-1.828-1.53l-.628-.27c-1.807-.77-3.006-1.735-3.006-3.774 0-1.88 1.433-3.31 3.67-3.31 1.595 0 2.742.555 3.564 2.01l-1.95 1.25a1.745 1.745 0 0 0-1.625-.895c-.737 0-1.206.47-1.206.895 0 .627.47.88 1.552 1.267l.628.27c2.13.91 3.33 1.835 3.33 3.92 0 2.24-1.76 3.492-4.125 3.492-2.313 0-3.807-1.1-4.538-2.543l2.05-1.18zm-9.365.19c.355.633.673 1.168 1.443 1.168.737 0 1.203-.29 1.203-1.413V14.13h2.527v9.69c0 2.327-1.363 3.385-3.355 3.385-1.797 0-2.84-.925-3.372-2.04l2.05-1.18h.002z"
+              />
+            </svg>
+            <span>JavaScript</span>
+          </li>
+          <li>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="60"
+              height="60"
+              viewBox="0 0 32 32"
+            >
+              <circle cx="16" cy="16" r="14" fill="#61DAFB" />
+              <path
+                stroke="#282C34"
+                stroke-width="2"
+                fill="none"
+                d="M16 8.5c-4.687 0-8.5 1.567-8.5 3.5s3.813 3.5 8.5 3.5 8.5-1.567 8.5-3.5-3.813-3.5-8.5-3.5zm0 11c-4.687 0-8.5 1.567-8.5 3.5s3.813 3.5 8.5 3.5 8.5-1.567 8.5-3.5-3.813-3.5-8.5-3.5z"
+              />
+              <circle cx="16" cy="16" r="2" fill="#282C34" />
+            </svg>
+            <span>React</span>
+          </li>
+          <li>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="60"
+              height="60"
+              viewBox="0 0 32 32"
+            >
+              <path fill="#8CC84B" d="M16 2L3 9v14l13 7 13-7V9z" />
+              <path fill="#333" d="M16 18l-7-4V9l7 4 7-4v5z" />
+            </svg>
+            <span>Node.js</span>
+          </li>
+          <li>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="60"
+              height="60"
+              viewBox="0 0 32 32"
+            >
+              <path fill="#F05032" d="M16 2L3 9v14l13 7 13-7V9z" />
+              <path fill="#FFF" d="M12 18l4-6 4 6h-3v4h-2v-4z" />
+            </svg>
+            <span>Git</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="about" class="about-section">
+      <h2 class="section-title">About Me</h2>
       <table width="100%" border="1" cellpadding="15">
         <tr>
           <td width="60%" valign="top">
-            <article>
-              <p>
+            <article class="about-content">
+              <p class="about-text">
                 I'm a passionate web developer with 6+ years of experience
                 building responsive and user-friendly websites. I love turning
                 ideas into reality through clean code and creative design.
               </p>
-              <p>
+              <p class="about-text">
                 When I'm not coding, you'll find me exploring new technologies,
                 reading tech blogs, or enjoying a good cup of coffee.
               </p>
             </article>
           </td>
           <td width="40%" valign="top">
-            <h3>My Skills</h3>
-            <ul>
+            <h3 class="skills-title">My Skills</h3>
+            <ul class="skills-list">
               <li>HTML5 & CSS3</li>
               <li>JavaScript & React</li>
               <li>Responsive Design</li>
@@ -91,55 +212,61 @@
       </table>
     </section>
 
-    <section id="work">
-      <h2>My Work</h2>
-      <p>Here are some projects I've worked on recently:</p>
+    <section id="work" class="work-section">
+      <h2 class="section-title">My Work</h2>
+      <p class="section-intro">
+        Here are some projects I've worked on recently:
+      </p>
 
-      <table width="100%" border="1" cellpadding="10">
+      <table width="100%" border="1" cellpadding="10" class="projects-grid">
         <tr>
           <td width="33%" valign="top">
-            <article>
-              <h3>E-Commerce Website</h3>
-              <p>
+            <article class="project-card">
+              <h3 class="project-title">E-Commerce Website</h3>
+              <p class="project-description">
                 A fully responsive online store with shopping cart functionality
                 and payment integration.
               </p>
-              <p>
+              <p class="project-tech">
                 <strong>Technologies:</strong> HTML, CSS, JavaScript, Node.js
               </p>
-              <a href="#project1">View Project Details</a>
+              <a href="#project1" class="project-link">View Project Details</a>
             </article>
           </td>
           <td width="33%" valign="top">
-            <article>
-              <h3>Portfolio Template</h3>
-              <p>
+            <article class="project-card">
+              <h3 class="project-title">Portfolio Template</h3>
+              <p class="project-description">
                 A modern portfolio template for creative professionals with
                 smooth animations and dark mode.
               </p>
-              <p><strong>Technologies:</strong> HTML, CSS, JavaScript</p>
-              <a href="#project2">View Project Details</a>
+              <p class="project-tech">
+                <strong>Technologies:</strong> HTML, CSS, JavaScript
+              </p>
+              <a href="#project2" class="project-link">View Project Details</a>
             </article>
           </td>
           <td width="34%" valign="top">
-            <article>
-              <h3>Restaurant Booking App</h3>
-              <p>
+            <article class="project-card">
+              <h3 class="project-title">Restaurant Booking App</h3>
+              <p class="project-description">
                 Mobile-first web application for restaurant reservations with
                 real-time availability.
               </p>
-              <p><strong>Technologies:</strong> React, Firebase, CSS</p>
-              <a href="#project3">View Project Details</a>
+              <p class="project-tech">
+                <strong>Technologies:</strong> React, Firebase, CSS
+              </p>
+              <a href="#project3" class="project-link">View Project Details</a>
             </article>
           </td>
         </tr>
       </table>
     </section>
 
-    <section id="resume">
-      <h2>Resume</h2>
+    <section id="resume" class="resume-section">
+      <h2 class="section-title">Resume</h2>
 
-      <table width="100%" border="1" cellpadding="10">
+      <table width="100%" border="1" cellpadding="10" class="resume-grid">
         <tr>
           <td width="50%" valign="top">
             <h3>Experience</h3>
@@ -198,14 +325,16 @@
       </table>
     </section>
 
-    <section id="contact">
-      <h2>Contact Me</h2>
-      <p>
+    <section id="contact" class="contact-section">
+      <h2 class="section-title">Contact Me</h2>
+      <p class="section-intro">
         Feel free to reach out! Fill out the form below or email me at
-        <a href="mailto:eric.kimathi@email.com">eric.kimathi@email.com</a>
+        <a href="mailto:eric.kimathi@email.com" class="email-link"
+          >eric.kimathi@email.com</a
+        >
       </p>
 
-      <form action="submit-form.php" method="POST">
+      <form action="submit-form.php" method="POST" class="contact-form">
         <fieldset>
           <legend>Get in Touch</legend>
 
@@ -296,28 +425,39 @@
       </form>
     </section>
 
-    <footer>
+    <footer class="footer">
       <table width="100%" border="1" cellpadding="10">
         <tr>
           <td align="center">
-            <p>&copy; 2025 Eric Kimathi. All rights reserved.</p>
-            <p>Connect with me:</p>
-            <table align="center">
+            <p class="copyright">
+              &copy; 2025 Eric Kimathi. All rights reserved.
+            </p>
+            <p class="social-heading">Connect with me:</p>
+            <table align="center" class="social-links">
               <tr>
                 <td>
-                  <a href="https://github.com/Ericokim" target="_blank"
+                  <a
+                    href="https://github.com/Ericokim"
+                    target="_blank"
+                    class="social-link"
                     >GitHub</a
                   >
                 </td>
                 <td>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
                 <td>
-                  <a href="https://linkedin.com/in/Ericokim" target="_blank"
+                  <a
+                    href="https://linkedin.com/in/Ericokim"
+                    target="_blank"
+                    class="social-link"
                     >LinkedIn</a
                   >
                 </td>
                 <td>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
                 <td>
-                  <a href="https://twitter.com/Ericokim" target="_blank"
+                  <a
+                    href="https://twitter.com/Ericokim"
+                    target="_blank"
+                    class="social-link"
                     >Twitter</a
                   >
                 </td>
