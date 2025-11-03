@@ -5,7 +5,6 @@
   --muted: #6c757d;
 }
 
-/* Page base */
 * {
   box-sizing: border-box;
 }
@@ -16,10 +15,9 @@ body {
   color: #222;
   background: #fff;
   -webkit-font-smoothing: antialiased;
-  padding-top: 70px; /* room for fixed navbar */
+  padding-top: 70px;
 }
 
-/* Navbar */
 .navbar-brand {
   font-weight: 700;
 }
@@ -30,7 +28,6 @@ body {
   border-color: rgba(0, 0, 0, 0.08);
 }
 
-/* Hero section */
 .hero {
   min-height: calc(100vh - 70px);
   display: flex;
@@ -44,7 +41,21 @@ body {
       rgba(11, 18, 32, 0.55),
       rgba(11, 18, 32, 0.55)
     ),
-    url("assets/images/hero.jpg");
+    url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80");
+
+  /* background-image: linear-gradient(
+      180deg,
+      rgba(11, 18, 32, 0.9),
+      rgba(11, 18, 32, 0.9)
+    ),
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.03),
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px,
+      transparent 10px
+    ); */
+
   background-size: cover;
   background-position: center;
 }
@@ -65,7 +76,6 @@ body {
   padding: 0.85rem 1.25rem;
 }
 
-/* Cards - destinations */
 .card {
   border: none;
   overflow: hidden;
@@ -83,19 +93,16 @@ body {
   font-weight: 700;
 }
 
-/* Accordion tweaks */
 .accordion-button {
   font-weight: 600;
 }
 
-/* Form tweaks */
 form .form-control,
 form .form-select,
 form textarea {
   border-radius: 6px;
 }
 
-/* Footer */
 footer {
   background: var(--dark);
   color: #e9eef5;
@@ -113,7 +120,6 @@ footer p {
   transform: translateY(-2px);
 }
 
-/* Responsive */
 @media (max-width: 767px) {
   .hero {
     min-height: 60vh;
@@ -125,7 +131,6 @@ footer p {
   }
 }
 
-/* Accessibility */
 a:focus,
 button:focus,
 .btn:focus {
