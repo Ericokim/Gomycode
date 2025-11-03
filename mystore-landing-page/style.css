@@ -1,4 +1,3 @@
-/* Hero Section */
 .hero {
   background: linear-gradient(
       135deg,
@@ -11,19 +10,16 @@
   background-attachment: fixed;
 }
 
-/* Navbar customization */
 .navbar {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
 
-/* Card image height consistency */
 .card-img-top {
   height: 250px;
   object-fit: cover;
 }
 
-/* Smooth scroll behavior */
 html {
   scroll-behavior: smooth;
 }
@@ -60,7 +56,6 @@ html {
   color: #333;
 }
 
-/* Featured Products Section */
 .featured-section {
   padding: 4rem 5%;
   background: #f9f9f9;
@@ -82,7 +77,6 @@ html {
   font-size: 1.1rem;
 }
 
-/* Horizontal Product Cards */
 .products-container {
   display: flex;
   gap: 2rem;
@@ -181,11 +175,11 @@ html {
   background: #764ba2;
 }
 
-/* About Section (Bootstrap-based) */
 .about-section {
   padding: 5rem 0;
 }
-ses .about-image {
+
+.about-image {
   width: 100%;
   height: 420px;
   object-fit: cover;
@@ -197,7 +191,6 @@ ses .about-image {
   text-align: left;
 }
 
-/* Responsive typography adjustments */
 @media (max-width: 991.98px) {
   .about-section .display-4 {
     font-size: calc(1.8rem + 1.5vw);
@@ -225,7 +218,6 @@ ses .about-image {
   }
 }
 
-/* Contact Section */
 .contact-section {
   padding: 3rem 5%;
   background: #f9f9f9;
@@ -269,7 +261,6 @@ ses .about-image {
   background: #667eea;
 }
 
-/* Footer */
 footer {
   background: #333;
   color: #fff;
@@ -277,7 +268,6 @@ footer {
   padding: 2rem 5%;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .nav-links {
     gap: 1rem;
