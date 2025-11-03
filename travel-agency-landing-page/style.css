@@ -1,0 +1,134 @@
+:root {
+  --primary: #0d6efd;
+  --accent: #ff7a59;
+  --dark: #0b1220;
+  --muted: #6c757d;
+}
+
+/* Page base */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial;
+  color: #222;
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+  padding-top: 70px; /* room for fixed navbar */
+}
+
+/* Navbar */
+.navbar-brand {
+  font-weight: 700;
+}
+.nav-link {
+  color: rgba(0, 0, 0, 0.8);
+}
+.navbar-toggler {
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Hero section */
+.hero {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 1rem;
+  color: #fff;
+  background-image: linear-gradient(
+      180deg,
+      rgba(11, 18, 32, 0.55),
+      rgba(11, 18, 32, 0.55)
+    ),
+    url("assets/images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.hero h1 {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 6px 30px rgba(2, 6, 23, 0.45);
+}
+.hero p.lead {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 1rem;
+}
+.hero .btn-primary {
+  background: linear-gradient(90deg, var(--primary), #2563eb);
+  border: none;
+  padding: 0.85rem 1.25rem;
+}
+
+/* Cards - destinations */
+.card {
+  border: none;
+  overflow: hidden;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+.card img {
+  height: 220px;
+  object-fit: cover;
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 40px rgba(12, 20, 32, 0.12);
+}
+.card .card-title {
+  font-weight: 700;
+}
+
+/* Accordion tweaks */
+.accordion-button {
+  font-weight: 600;
+}
+
+/* Form tweaks */
+form .form-control,
+form .form-select,
+form textarea {
+  border-radius: 6px;
+}
+
+/* Footer */
+footer {
+  background: var(--dark);
+  color: #e9eef5;
+}
+footer p {
+  margin: 0;
+  opacity: 0.9;
+}
+.social-links a {
+  color: #e9eef5;
+  transition: color 0.18s ease, transform 0.18s ease;
+}
+.social-links a:hover {
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .hero {
+    min-height: 60vh;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+  .card img {
+    height: 180px;
+  }
+}
+
+/* Accessibility */
+a:focus,
+button:focus,
+.btn:focus {
+  outline: 3px solid rgba(13, 110, 253, 0.18);
+  outline-offset: 2px;
+}
