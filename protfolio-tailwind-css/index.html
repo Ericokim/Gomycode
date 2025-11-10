@@ -3,43 +3,139 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eric's - Portfolio</title>
+    <title>Eric Munene – Full Stack Developer</title>
+
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Inter Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
+
+    <!-- Tailwind Config -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#ea580c", // orange-600
+              accent: "#dc2626", // red-600
+              muted: "#64748b",
+            },
+            fontFamily: {
+              sans: ["Inter", "system-ui", "sans-serif"],
+            },
+            boxShadow: {
+              card: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+              "card-hover":
+                "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+              xl: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+            },
+            borderRadius: {
+              xl: "1rem",
+              "2xl": "1.5rem",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      .hover-lift {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .hover-lift:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--tw-shadow-card-hover);
+      }
+      .gradient-text {
+        background: linear-gradient(to right, #ea580c, #dc2626);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero-overlay {
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.3),
+          rgba(0, 0, 0, 0.7)
+        );
+      }
+    </style>
   </head>
-  <body class="bg-gray-100">
-    <!-- Header Section -->
-    <header class="bg-gray-800 shadow-md fixed w-full top-0 z-50">
-      <nav class="container mx-auto px-6 py-4">
-        <div class="flex items-center justify-between">
-          <div class="text-2xl font-bold text-white">Eric</div>
-          <div class="hidden md:flex space-x-6">
+
+  <body
+    class="font-sans text-gray-800 bg-gray-50 selection:bg-primary selection:text-white"
+  >
+    <!-- Header -->
+    <header
+      class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo -->
+          <div class="flex-shrink-0">
+            <a href="#" class="flex items-center">
+              <h1 class="text-2xl font-extrabold tracking-tight">
+                <span class="gradient-text">Eric Munene</span>
+              </h1>
+            </a>
+          </div>
+
+          <!-- Desktop Nav -->
+          <nav class="hidden md:flex items-center space-x-8">
             <a
               href="#home"
-              class="text-gray-300 hover:text-white font-medium transition duration-300 border-b-2 border-transparent hover:border-blue-600"
-              >Home</a
+              class="text-sm font-medium text-gray-700 hover:text-primary transition relative group"
             >
+              Home
+              <span
+                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all group-hover:w-full"
+              ></span>
+            </a>
             <a
               href="#projects"
-              class="text-gray-300 hover:text-white font-medium transition duration-300 border-b-2 border-transparent hover:border-blue-600"
-              >Projects</a
+              class="text-sm font-medium text-gray-700 hover:text-primary transition relative group"
             >
+              Projects
+              <span
+                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all group-hover:w-full"
+              ></span>
+            </a>
             <a
               href="#contact"
-              class="text-gray-300 hover:text-white font-medium transition duration-300 border-b-2 border-transparent hover:border-blue-600"
-              >Contact</a
+              class="text-sm font-medium text-gray-700 hover:text-primary transition relative group"
             >
-          </div>
-          <!-- Mobile menu button -->
-          <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none">
+              Contact
+              <span
+                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all group-hover:w-full"
+              ></span>
+            </a>
+          </nav>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="menuBtn"
+            class="md:hidden p-2 rounded-md text-gray-600 hover:text-primary hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary"
+            aria-label="Toggle menu"
+          >
             <svg
-              class="h-6 w-6"
+              xmlns="http://www.w3.org/2000/svg"
               fill="none"
-              stroke="currentColor"
               viewBox="0 0 24 24"
+              stroke="currentColor"
+              class="w-6 h-6"
             >
               <path
                 stroke-linecap="round"
@@ -50,227 +146,390 @@
             </svg>
           </button>
         </div>
-      </nav>
+      </div>
+
+      <!-- Mobile Nav -->
+      <div
+        id="mobileNav"
+        class="hidden md:hidden bg-white border-t border-gray-200"
+      >
+        <nav class="px-4 py-3 space-y-1">
+          <a
+            href="#home"
+            class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md"
+            >Home</a
+          >
+          <a
+            href="#projects"
+            class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md"
+            >Projects</a
+          >
+          <a
+            href="#contact"
+            class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md"
+            >Contact</a
+          >
+        </nav>
+      </div>
     </header>
 
-    
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-gray-800 shadow-lg absolute w-full top-16 left-0 z-50">
-          <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
-            <a href="#home" class="text-gray-300 hover:text-white font-medium transition duration-300">Home</a>
-            <a href="#projects" class="text-gray-300 hover:text-white font-medium transition duration-300">Projects</a>
-            <a href="#contact" class="text-gray-300 hover:text-white font-medium transition duration-300">Contact</a>
-          </div>
-        </div>
-    
-        <!-- Hero Section -->
-        <section
-          id="home"
-          class="pt-20 bg-cover bg-center text-white min-h-screen flex items-center relative"
-          style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80')"
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-fixed"
+      style="
+        background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+      "
+    >
+      <div class="absolute inset-0 hero-overlay"></div>
+      <div
+        class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto"
+      >
+        <h1
+          class="text-5xl sm:text-6xl md:text-7xl font-extrabold text-white mb-6 leading-tight"
         >
-          <div class="absolute inset-0 bg-black opacity-60"></div>
-          <div class="container mx-auto px-6 py-24 relative z-10">
-            <div class="max-w-3xl mx-auto text-center">
-              <h1 class="text-6xl md:text-7xl font-extrabold mb-6 tracking-tight">
-                Hello, I'm Eric Munene
-              </h1>
-              <p class="text-2xl md:text-3xl font-medium mb-8 text-blue-100">
-                Full Stack Developer crafting beautiful web experiences
-              </p>
-              <a
-                href="#contact"
-                class="inline-block bg-white text-blue-600 px-8 py-4 rounded-full font-semibold hover:bg-blue-600 hover:text-white transition-all duration-300 text-lg shadow-lg hover:shadow-xl transform hover:scale-105 hover:-translate-y-1"
-                >Get in Touch</a
-              >
-            </div>
-          </div>
-        </section>
+          Hello, I'm <span class="gradient-text">Eric Munene</span>
+        </h1>
+        <p
+          class="text-xl sm:text-2xl md:text-3xl text-gray-100 font-medium mb-8 max-w-3xl mx-auto"
+        >
+          Full Stack Developer crafting beautiful, performant web experiences
+          from Nairobi, Kenya
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="#contact"
+            class="inline-flex items-center justify-center px-8 py-4 bg-white text-primary font-bold rounded-xl shadow-lg hover:shadow-xl hover:bg-gray-50 transition-all duration-300 transform hover:-translate-y-1"
+          >
+            Get in Touch
+            <svg
+              class="ml-2 w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </a>
+          <a
+            href="#projects"
+            class="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-bold rounded-xl hover:bg-white hover:text-primary transition-all duration-300"
+          >
+            View My Work
+          </a>
+        </div>
+      </div>
+      <div
+        class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+      >
+        <svg
+          class="w-8 h-8 text-white"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 14l-7 7m0 0l-7-7m7 7V3"
+          />
+        </svg>
+      </div>
+    </section>
+
     <!-- Skills Section -->
     <section class="py-20 bg-white">
-      <div class="container mx-auto px-6">
-        <h2 class="text-4xl font-bold text-center mb-4">My Skills</h2>
-        <p class="text-gray-600 text-center mb-12 text-lg">
-          Technologies I work with
-        </p>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+            My Skills
+          </h2>
+          <p class="text-lg text-muted max-w-2xl mx-auto">
+            Technologies and tools I use to build modern, scalable web
+            applications
+          </p>
+        </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-          <div
-            class="text-center p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
-          >
+          <!-- Skill 1 -->
+          <div class="text-center group hover-lift">
             <div
-              class="h-20 w-20 mx-auto bg-orange-50 rounded-full flex items-center justify-center mb-6"
+              class="h-24 w-24 mx-auto bg-orange-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-orange-100 transition"
             >
-              <i class="fab fa-html5 text-5xl text-orange-500"></i>
+              <i class="fab fa-html5 text-5xl text-orange-600"></i>
             </div>
-            <h3 class="font-bold text-lg mb-2">HTML5</h3>
-            <p class="text-gray-600 text-sm">Semantic Markup</p>
+            <h3 class="font-bold text-lg mb-1">HTML5</h3>
+            <p class="text-sm text-muted">Semantic & Accessible</p>
           </div>
-          <div
-            class="text-center p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
-          >
+          <!-- Skill 2 -->
+          <div class="text-center group hover-lift">
             <div
-              class="h-20 w-20 mx-auto bg-blue-50 rounded-full flex items-center justify-center mb-6"
+              class="h-24 w-24 mx-auto bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-100 transition"
             >
-              <i class="fab fa-css3-alt text-5xl text-blue-500"></i>
+              <i class="fab fa-css3-alt text-5xl text-blue-600"></i>
             </div>
-            <h3 class="font-bold text-lg mb-2">CSS3</h3>
-            <p class="text-gray-600 text-sm">Modern Layouts</p>
+            <h3 class="font-bold text-lg mb-1">CSS3</h3>
+            <p class="text-sm text-muted">Flexbox, Grid, Animations</p>
           </div>
-          <div
-            class="text-center p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
-          >
+          <!-- Skill 3 -->
+          <div class="text-center group hover-lift">
             <div
-              class="h-20 w-20 mx-auto bg-yellow-50 rounded-full flex items-center justify-center mb-6"
+              class="h-24 w-24 mx-auto bg-yellow-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-yellow-100 transition"
             >
-              <i class="fab fa-js text-5xl text-yellow-500"></i>
+              <i class="fab fa-js-square text-5xl text-yellow-600"></i>
             </div>
-            <h3 class="font-bold text-lg mb-2">JavaScript</h3>
-            <p class="text-gray-600 text-sm">ES6+ Features</p>
+            <h3 class="font-bold text-lg mb-1">JavaScript</h3>
+            <p class="text-sm text-muted">ES6+, Async/Await</p>
           </div>
-          <div
-            class="text-center p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
-          >
+          <!-- Skill 4 -->
+          <div class="text-center group hover-lift">
             <div
-              class="h-20 w-20 mx-auto bg-blue-50 rounded-full flex items-center justify-center mb-6"
+              class="h-24 w-24 mx-auto bg-cyan-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-cyan-100 transition"
             >
-              <i class="fab fa-react text-5xl text-blue-400"></i>
+              <i class="fab fa-react text-5xl text-cyan-600"></i>
             </div>
-            <h3 class="font-bold text-lg mb-2">React</h3>
-            <p class="text-gray-600 text-sm">Modern UI</p>
+            <h3 class="font-bold text-lg mb-1">React</h3>
+            <p class="text-sm text-muted">Hooks, Context, SSR</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-gray-100">
-      <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center mb-12">My Projects</h2>
+    <section id="projects" class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+            Featured Projects
+          </h2>
+          <p class="text-lg text-muted max-w-2xl mx-auto">
+            Real-world applications I've built with modern tech stacks
+          </p>
+        </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Project Card 1 -->
-          <div
-            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1"
+          <!-- Project 1 -->
+          <article
+            class="bg-white rounded-2xl overflow-hidden shadow-card hover-lift group cursor-pointer"
           >
-            <img
-              src="https://images.unsplash.com/photo-1607082349566-187342175e2f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZWNvbW1lcmNlfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
-              alt="E-commerce Project"
-              class="w-full h-48 object-cover hover:opacity-90 transition duration-300"
-            />
+            <div class="relative overflow-hidden h-56">
+              <img
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                alt="E-commerce Platform"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                onerror="this.src='https://via.placeholder.com/800x600/1f2937/ffffff?text=E-Commerce';"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition"
+              ></div>
+              <span
+                class="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full"
+                >React + Node.js</span
+              >
+            </div>
             <div class="p-6">
-              <h3 class="font-bold text-xl mb-2">E-commerce Website</h3>
-              <p class="text-gray-600 mb-4">
-                A full-featured online store built with React and Node.js
+              <h3
+                class="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition"
+              >
+                E-commerce Platform
+              </h3>
+              <p class="text-muted text-sm mb-4 line-clamp-2">
+                Full-stack online store with payment integration, cart, and
+                admin dashboard
               </p>
               <a
                 href="#"
-                class="inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold group"
-                >View Project
-                <span
-                  class="ml-1 group-hover:translate-x-1 transition-transform duration-300"
-                  >→</span
-                ></a
+                class="inline-flex items-center text-primary font-medium text-sm hover:underline"
+              >
+                View Project
+                <svg
+                  class="ml-1 w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article
+            class="bg-white rounded-2xl overflow-hidden shadow-card hover-lift group cursor-pointer"
+          >
+            <div class="relative overflow-hidden h-56">
+              <img
+                src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                alt="Task Manager App"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                onerror="this.src='https://via.placeholder.com/800x600/1f2937/ffffff?text=Task+App';"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition"
+              ></div>
+              <span
+                class="absolute top-4 left-4 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full"
+                >Vue + Firebase</span
               >
             </div>
-          </div>
-          <!-- Project Card 2 -->
-          <div
-            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1"
-          >
-            <img
-              src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29kaW5nfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
-              alt="Task Manager Project"
-              class="w-full h-48 object-cover hover:opacity-90 transition duration-300"
-            />
             <div class="p-6">
-              <h3 class="font-bold text-xl mb-2">Task Manager App</h3>
-              <p class="text-gray-600 mb-4">
-                A productivity app built with Vue.js and Firebase
+              <h3
+                class="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition"
+              >
+                TaskFlow Pro
+              </h3>
+              <p class="text-muted text-sm mb-4 line-clamp-2">
+                Real-time collaborative task manager with drag-and-drop and
+                notifications
               </p>
               <a
                 href="#"
-                class="inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold group"
-                >View Project
-                <span
-                  class="ml-1 group-hover:translate-x-1 transition-transform duration-300"
-                  >→</span
-                ></a
+                class="inline-flex items-center text-primary font-medium text-sm hover:underline"
               >
+                View Project
+                <svg
+                  class="ml-1 w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article
+            class="bg-white rounded-2xl overflow-hidden shadow-card hover-lift group cursor-pointer"
+          >
+            <div class="relative overflow-hidden h-56">
+              <img
+                src="https://images.unsplash.com/photo-1534670007418-fbb7f6cf32c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                alt="Weather Dashboard"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                onerror="this.src='https://via.placeholder.com/800x600/1f2937/ffffff?text=Weather+App';"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition"
+              ></div>
+              <span
+                class="absolute top-4 left-4 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full"
+                >API + Charts</span
               >
             </div>
-          </div>
-          <!-- Project Card 3 -->
-          <div
-            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1"
-          >
-            <img
-              src="https://images.unsplash.com/photo-1534670007418-fbb7f6cf32c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8d2VhdGhlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60"
-              alt="Weather Dashboard"
-              class="w-full h-48 object-cover hover:opacity-90 transition duration-300"
-            />
             <div class="p-6">
-              <h3 class="font-bold text-xl mb-2">Weather Dashboard</h3>
-              <p class="text-gray-600 mb-4">
-                A weather application using OpenWeather API
+              <h3
+                class="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition"
+              >
+                Weather Dashboard
+              </h3>
+              <p class="text-muted text-sm mb-4 line-clamp-2">
+                Interactive weather app with 7-day forecast, maps, and location
+                search
               </p>
               <a
                 href="#"
-                class="text-blue-600 hover:text-blue-800 font-semibold"
-                >View Project →</a
+                class="inline-flex items-center text-primary font-medium text-sm hover:underline"
               >
+                View Project
+                <svg
+                  class="ml-1 w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </a>
             </div>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- Contact Form Section -->
-    <section id="contact" class="py-20 bg-gradient-to-b from-white to-gray-50">
-      <div class="container mx-auto px-6">
-        <h2 class="text-4xl font-bold text-center mb-4">Get in Touch</h2>
-        <p class="text-gray-600 text-center mb-12 text-lg">
-          Let's work together on your next project
-        </p>
-        <div class="max-w-lg mx-auto bg-white rounded-2xl shadow-xl p-8">
-          <form class="space-y-6">
-            <div>
-              <label for="name" class="block text-gray-700 font-medium mb-2"
-                >Name</label
-              >
-              <input
-                type="text"
-                id="name"
-                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 transition duration-200"
-                required
-                placeholder="Enter your name"
-              />
+    <!-- Contact Form -->
+    <section id="contact" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+            Get in Touch
+          </h2>
+          <p class="text-lg text-muted max-w-2xl mx-auto">
+            Have a project in mind? Let's build something amazing together.
+          </p>
+        </div>
+        <div class="max-w-2xl mx-auto">
+          <form
+            class="bg-white rounded-2xl shadow-xl p-8 space-y-6 border border-gray-100"
+          >
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label
+                  for="name"
+                  class="block text-sm font-medium text-gray-700 mb-2"
+                  >Full Name</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  required
+                  class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition"
+                  placeholder="Eric Munene"
+                />
+              </div>
+              <div>
+                <label
+                  for="email"
+                  class="block text-sm font-medium text-gray-700 mb-2"
+                  >Email Address</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  required
+                  class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition"
+                  placeholder="eric@example.com"
+                />
+              </div>
             </div>
             <div>
-              <label for="email" class="block text-gray-700 font-medium mb-2"
-                >Email</label
-              >
-              <input
-                type="email"
-                id="email"
-                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 transition duration-200"
-                required
-                placeholder="Enter your email"
-              />
-            </div>
-            <div>
-              <label for="message" class="block text-gray-700 font-medium mb-2"
+              <label
+                for="message"
+                class="block text-sm font-medium text-gray-700 mb-2"
                 >Message</label
               >
               <textarea
                 id="message"
                 rows="5"
-                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 transition duration-200"
                 required
-                placeholder="Your message here..."
+                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition resize-none"
+                placeholder="Tell me about your project..."
               ></textarea>
             </div>
             <button
               type="submit"
-              class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transform hover:-translate-y-1 transition-all duration-300 text-lg font-semibold shadow-lg hover:shadow-xl"
+              class="w-full bg-gradient-to-r from-primary to-accent text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
             >
               Send Message
             </button>
@@ -279,83 +538,91 @@
       </div>
     </section>
 
-    <!-- Footer Section -->
-    <footer class="bg-gray-900 text-white py-16">
-      <div class="container mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
-          <div class="text-center md:text-left">
-            <h3 class="text-3xl font-bold mb-3">Eric Munene</h3>
-            <p class="text-gray-400 text-lg">Full Stack Developer</p>
-            <p class="text-gray-400 mt-4">
-              Crafting digital experiences with code
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div>
+            <h3 class="text-2xl font-bold text-white mb-4">
+              <span class="gradient-text">Eric Munene</span>
+            </h3>
+            <p class="text-sm">Full Stack Developer based in Nairobi, Kenya</p>
+            <p class="text-sm mt-2">
+              Building the future of the web, one line at a time.
             </p>
           </div>
-          <div class="text-center">
-            <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
-            <nav class="flex flex-col space-y-3">
-              <a
-                href="#home"
-                class="text-gray-400 hover:text-white transition duration-300"
-                >Home</a
-              >
-              <a
-                href="#projects"
-                class="text-gray-400 hover:text-white transition duration-300"
-                >Projects</a
-              >
-              <a
-                href="#contact"
-                class="text-gray-400 hover:text-white transition duration-300"
-                >Contact</a
-              >
-            </nav>
+          <div>
+            <h4
+              class="text-sm font-semibold text-white uppercase tracking-wider mb-4"
+            >
+              Quick Links
+            </h4>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a href="#home" class="hover:text-white transition">Home</a>
+              </li>
+              <li>
+                <a href="#projects" class="hover:text-white transition"
+                  >Projects</a
+                >
+              </li>
+              <li>
+                <a href="#contact" class="hover:text-white transition"
+                  >Contact</a
+                >
+              </li>
+            </ul>
           </div>
-          <div class="text-center md:text-right">
-            <h4 class="text-xl font-semibold mb-4">Connect</h4>
-            <div class="flex justify-center md:justify-end space-x-6">
+          <div>
+            <h4
+              class="text-sm font-semibold text-white uppercase tracking-wider mb-4"
+            >
+              Connect
+            </h4>
+            <div class="flex space-x-4">
               <a
                 href="#"
-                class="hover:text-blue-400 transition duration-300 transform hover:-translate-y-1"
+                class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition"
               >
-                <i class="fab fa-twitter text-3xl"></i>
+                <i class="fab fa-twitter text-lg"></i>
               </a>
               <a
                 href="#"
-                class="hover:text-blue-400 transition duration-300 transform hover:-translate-y-1"
+                class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition"
               >
-                <i class="fab fa-linkedin text-3xl"></i>
+                <i class="fab fa-linkedin text-lg"></i>
               </a>
               <a
                 href="#"
-                class="hover:text-blue-400 transition duration-300 transform hover:-translate-y-1"
+                class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition"
               >
-                <i class="fab fa-github text-3xl"></i>
+                <i class="fab fa-github text-lg"></i>
               </a>
             </div>
           </div>
         </div>
-        <div
-          class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400"
-        >
-          <p>&copy; 2025 EricMunene. All rights reserved.</p>
+        <div class="mt-12 pt-8 border-t border-gray-800 text-center text-sm">
+          <p>
+            © 2025 Eric Munene. All rights reserved. Made with
+            <span class="text-red-500">love</span> in Nairobi, Kenya.
+          </p>
         </div>
       </div>
     </footer>
 
     <script>
       // Mobile menu toggle
-      const mobileMenuButton = document.getElementById('mobile-menu-button');
-      const mobileMenu = document.getElementById('mobile-menu');
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileNav = document.getElementById("mobileNav");
 
-      mobileMenuButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
+      menuBtn.addEventListener("click", () => {
+        mobileNav.classList.toggle("hidden");
       });
 
-      // Close mobile menu when clicking on a link
-      const mobileLinks = document.querySelectorAll('#mobile-menu a');
-      mobileLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          mobileMenu.classList.add('hidden');
+      // Close mobile menu on link click
+      document.querySelectorAll("#mobileNav a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileNav.classList.add("hidden");
         });
       });
     </script>
