@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eric's - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body class="bg-gray-100">
+    <!-- Header Section -->
+    <header class="bg-gray-800 shadow-md fixed w-full top-0 z-50">
+      <nav class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <div class="text-2xl font-bold text-white">Eric</div>
+          <div class="hidden md:flex space-x-6">
+            <a
+              href="#home"
+              class="text-gray-300 hover:text-white font-medium transition duration-300 border-b-2 border-transparent hover:border-blue-600"
+              >Home</a
+            >
+            <a
+              href="#projects"
+              class="text-gray-300 hover:text-white font-medium transition duration-300 border-b-2 border-transparent hover:border-blue-600"
+              >Projects</a
+            >
+            <a
+              href="#contact"
+              class="text-gray-300 hover:text-white font-medium transition duration-300 border-b-2 border-transparent hover:border-blue-600"
+              >Contact</a
+            >
+          </div>
+          <!-- Mobile menu button -->
+          <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none">
+            <svg
+              class="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-gray-800 shadow-lg absolute w-full top-16 left-0 z-50">
+          <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+            <a href="#home" class="text-gray-300 hover:text-white font-medium transition duration-300">Home</a>
+            <a href="#projects" class="text-gray-300 hover:text-white font-medium transition duration-300">Projects</a>
+            <a href="#contact" class="text-gray-300 hover:text-white font-medium transition duration-300">Contact</a>
+          </div>
+        </div>
+    
+        <!-- Hero Section -->
+        <section
+          id="home"
+          class="pt-20 bg-cover bg-center text-white min-h-screen flex items-center relative"
+          style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80')"
+        >
+          <div class="absolute inset-0 bg-black opacity-60"></div>
+          <div class="container mx-auto px-6 py-24 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+              <h1 class="text-6xl md:text-7xl font-extrabold mb-6 tracking-tight">
+                Hello, I'm Eric Munene
+              </h1>
+              <p class="text-2xl md:text-3xl font-medium mb-8 text-blue-100">
+                Full Stack Developer crafting beautiful web experiences
+              </p>
+              <a
+                href="#contact"
+                class="inline-block bg-white text-blue-600 px-8 py-4 rounded-full font-semibold hover:bg-blue-600 hover:text-white transition-all duration-300 text-lg shadow-lg hover:shadow-xl transform hover:scale-105 hover:-translate-y-1"
+                >Get in Touch</a
+              >
+            </div>
+          </div>
+        </section>
+    <!-- Skills Section -->
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center mb-4">My Skills</h2>
+        <p class="text-gray-600 text-center mb-12 text-lg">
+          Technologies I work with
+        </p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div
+            class="text-center p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+          >
+            <div
+              class="h-20 w-20 mx-auto bg-orange-50 rounded-full flex items-center justify-center mb-6"
+            >
+              <i class="fab fa-html5 text-5xl text-orange-500"></i>
+            </div>
+            <h3 class="font-bold text-lg mb-2">HTML5</h3>
+            <p class="text-gray-600 text-sm">Semantic Markup</p>
+          </div>
+          <div
+            class="text-center p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+          >
+            <div
+              class="h-20 w-20 mx-auto bg-blue-50 rounded-full flex items-center justify-center mb-6"
+            >
+              <i class="fab fa-css3-alt text-5xl text-blue-500"></i>
+            </div>
+            <h3 class="font-bold text-lg mb-2">CSS3</h3>
+            <p class="text-gray-600 text-sm">Modern Layouts</p>
+          </div>
+          <div
+            class="text-center p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+          >
+            <div
+              class="h-20 w-20 mx-auto bg-yellow-50 rounded-full flex items-center justify-center mb-6"
+            >
+              <i class="fab fa-js text-5xl text-yellow-500"></i>
+            </div>
+            <h3 class="font-bold text-lg mb-2">JavaScript</h3>
+            <p class="text-gray-600 text-sm">ES6+ Features</p>
+          </div>
+          <div
+            class="text-center p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+          >
+            <div
+              class="h-20 w-20 mx-auto bg-blue-50 rounded-full flex items-center justify-center mb-6"
+            >
+              <i class="fab fa-react text-5xl text-blue-400"></i>
+            </div>
+            <h3 class="font-bold text-lg mb-2">React</h3>
+            <p class="text-gray-600 text-sm">Modern UI</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-100">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-12">My Projects</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Project Card 1 -->
+          <div
+            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1607082349566-187342175e2f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZWNvbW1lcmNlfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
+              alt="E-commerce Project"
+              class="w-full h-48 object-cover hover:opacity-90 transition duration-300"
+            />
+            <div class="p-6">
+              <h3 class="font-bold text-xl mb-2">E-commerce Website</h3>
+              <p class="text-gray-600 mb-4">
+                A full-featured online store built with React and Node.js
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold group"
+                >View Project
+                <span
+                  class="ml-1 group-hover:translate-x-1 transition-transform duration-300"
+                  >→</span
+                ></a
+              >
+            </div>
+          </div>
+          <!-- Project Card 2 -->
+          <div
+            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29kaW5nfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
+              alt="Task Manager Project"
+              class="w-full h-48 object-cover hover:opacity-90 transition duration-300"
+            />
+            <div class="p-6">
+              <h3 class="font-bold text-xl mb-2">Task Manager App</h3>
+              <p class="text-gray-600 mb-4">
+                A productivity app built with Vue.js and Firebase
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold group"
+                >View Project
+                <span
+                  class="ml-1 group-hover:translate-x-1 transition-transform duration-300"
+                  >→</span
+                ></a
+              >
+              >
+            </div>
+          </div>
+          <!-- Project Card 3 -->
+          <div
+            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1534670007418-fbb7f6cf32c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8d2VhdGhlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60"
+              alt="Weather Dashboard"
+              class="w-full h-48 object-cover hover:opacity-90 transition duration-300"
+            />
+            <div class="p-6">
+              <h3 class="font-bold text-xl mb-2">Weather Dashboard</h3>
+              <p class="text-gray-600 mb-4">
+                A weather application using OpenWeather API
+              </p>
+              <a
+                href="#"
+                class="text-blue-600 hover:text-blue-800 font-semibold"
+                >View Project →</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="py-20 bg-gradient-to-b from-white to-gray-50">
+      <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center mb-4">Get in Touch</h2>
+        <p class="text-gray-600 text-center mb-12 text-lg">
+          Let's work together on your next project
+        </p>
+        <div class="max-w-lg mx-auto bg-white rounded-2xl shadow-xl p-8">
+          <form class="space-y-6">
+            <div>
+              <label for="name" class="block text-gray-700 font-medium mb-2"
+                >Name</label
+              >
+              <input
+                type="text"
+                id="name"
+                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 transition duration-200"
+                required
+                placeholder="Enter your name"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-gray-700 font-medium mb-2"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="email"
+                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 transition duration-200"
+                required
+                placeholder="Enter your email"
+              />
+            </div>
+            <div>
+              <label for="message" class="block text-gray-700 font-medium mb-2"
+                >Message</label
+              >
+              <textarea
+                id="message"
+                rows="5"
+                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 transition duration-200"
+                required
+                placeholder="Your message here..."
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transform hover:-translate-y-1 transition-all duration-300 text-lg font-semibold shadow-lg hover:shadow-xl"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 text-white py-16">
+      <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+          <div class="text-center md:text-left">
+            <h3 class="text-3xl font-bold mb-3">Eric Munene</h3>
+            <p class="text-gray-400 text-lg">Full Stack Developer</p>
+            <p class="text-gray-400 mt-4">
+              Crafting digital experiences with code
+            </p>
+          </div>
+          <div class="text-center">
+            <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+            <nav class="flex flex-col space-y-3">
+              <a
+                href="#home"
+                class="text-gray-400 hover:text-white transition duration-300"
+                >Home</a
+              >
+              <a
+                href="#projects"
+                class="text-gray-400 hover:text-white transition duration-300"
+                >Projects</a
+              >
+              <a
+                href="#contact"
+                class="text-gray-400 hover:text-white transition duration-300"
+                >Contact</a
+              >
+            </nav>
+          </div>
+          <div class="text-center md:text-right">
+            <h4 class="text-xl font-semibold mb-4">Connect</h4>
+            <div class="flex justify-center md:justify-end space-x-6">
+              <a
+                href="#"
+                class="hover:text-blue-400 transition duration-300 transform hover:-translate-y-1"
+              >
+                <i class="fab fa-twitter text-3xl"></i>
+              </a>
+              <a
+                href="#"
+                class="hover:text-blue-400 transition duration-300 transform hover:-translate-y-1"
+              >
+                <i class="fab fa-linkedin text-3xl"></i>
+              </a>
+              <a
+                href="#"
+                class="hover:text-blue-400 transition duration-300 transform hover:-translate-y-1"
+              >
+                <i class="fab fa-github text-3xl"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400"
+        >
+          <p>&copy; 2025 EricMunene. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      // Close mobile menu when clicking on a link
+      const mobileLinks = document.querySelectorAll('#mobile-menu a');
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+    </script>
+  </body>
+</html>
