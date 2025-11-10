@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DevPulse – Tech & Design Blog</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Inter Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind Config -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#ea580c', // orange-600
+              accent: '#dc2626',  // red-600
+              muted: '#64748b',
+            },
+            fontFamily: {
+              sans: ['Inter', 'system-ui', 'sans-serif'],
+            },
+            boxShadow: {
+              'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+              'card-hover': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      .hover-lift {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .hover-lift:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--tw-shadow-card-hover);
+      }
+      .gradient-text {
+        background: linear-gradient(to right, #ea580c, #dc2626);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .category-badge {
+        transition: all 0.3s ease;
+      }
+      .category-badge:hover {
+        transform: translateY(-2px);
+      }
+      .skeleton {
+        background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+        background-size: 200% 100%;
+        animation: loading 1.5s infinite;
+      }
+      @keyframes loading {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+      }
+    </style>
+  </head>
+
+  <body class="font-sans text-gray-800 bg-gray-50 selection:bg-primary selection:text-white">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo -->
+          <div class="flex-shrink-0">
+            <a href="#" class="flex items-center">
+              <h1 class="text-2xl font-extrabold tracking-tight">
+                <span class="gradient-text">DevPulse</span>
+              </h1>
+            </a>
+          </div>
+
+          <!-- Desktop Nav -->
+          <nav class="hidden md:flex items-center space-x-8">
+            <a href="#" class="text-sm font-medium text-gray-700 hover:text-primary transition relative group">
+              Home
+              <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all group-hover:w-full"></span>
+            </a>
+            <a href="#categories" class="text-sm font-medium text-gray-700 hover:text-primary transition relative group">
+              Categories
+              <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all group-hover:w-full"></span>
+            </a>
+            <a href="#" class="text-sm font-medium text-gray-700 hover:text-primary transition relative group">
+              About
+              <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all group-hover:w-full"></span>
+            </a>
+            <a href="#" class="text-sm font-medium text-gray-700 hover:text-primary transition relative group">
+              Contact
+              <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all group-hover:w-full"></span>
+            </a>
+          </nav>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="menuBtn"
+            class="md:hidden p-2 rounded-md text-gray-600 hover:text-primary hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary"
+            aria-label="Toggle menu"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Nav -->
+      <div id="mobileNav" class="hidden md:hidden bg-white border-t border-gray-200">
+        <nav class="px-4 py-3 space-y-1">
+          <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md">Home</a>
+          <a href="#categories" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md">Categories</a>
+          <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md">About</a>
+          <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- NEW: Creative Intro Section (Replaces Hero) -->
+    <section class="bg-gradient-to-b from-white to-gray-50 py-16 border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- Text Content -->
+          <div class="order-2 md:order-1">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
+              Fresh Insights on <span class="gradient-text">Code & Design</span>
+            </h1>
+            <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+              DevPulse delivers weekly deep dives into modern web development, UI/UX trends, AI tools, and developer workflows — all crafted for builders who ship.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a
+                href="#featured"
+                class="inline-flex items-center justify-center px-6 py-3 bg-primary text-white font-bold rounded-xl shadow-md hover:shadow-lg hover:bg-orange-700 transition-all duration-300"
+              >
+                Read Latest Articles
+                <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </a>
+              <a
+                href="#newsletter"
+                class="inline-flex items-center justify-center px-6 py-3 border-2 border-primary text-primary font-bold rounded-xl hover:bg-primary hover:text-white transition-all duration-300"
+              >
+                Join 12K+ Readers
+              </a>
+              </a>
+            </div>
+            <div class="mt-8 flex items-center gap-6 text-sm text-muted">
+              <div class="flex items-center">
+                <svg class="w-5 h-5 text-green-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Updated daily</span>
+              </div>
+              <div class="flex items-center">
+                <svg class="w-5 h-5 text-blue-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688 1.54 1.118l2.8-2.034a1 1 0 00 1.175 0l2.8 2.034c.784.57 1.838-.197 1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L15.221 7.91a1 1 0 00-.588-.81l3.462-.69a1 1 0 00.95-.69l1.07-3.292z" />
+                </svg>
+                <span>Trusted by devs in Kenya & beyond</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Visual Element: Featured Image with Overlay -->
+          <div class="order-1 md:order-2">
+            <div class="relative rounded-2xl overflow-hidden shadow-xl">
+              <!-- Fallback: Use direct Unsplash image URLs with fixed dimensions -->
+              <img
+                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                alt="Developer coding on laptop with modern UI"
+                class="w-full h-96 object-cover"
+                onerror="this.src='https://via.placeholder.com/800x600/1f2937/ffffff?text=Dev+Pulse'; this.onerror=null;"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              <div class="absolute bottom-6 left-6 text-white">
+                <p class="text-sm font-medium opacity-90">Featured Today</p>
+                <p class="text-lg font-bold">Building AI-Powered Apps with React</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Posts -->
+    <section id="featured" class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-900">Featured Posts</h2>
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <!-- Card 1 -->
+          <article class="bg-white rounded-2xl overflow-hidden shadow-card hover-lift cursor-pointer group">
+            <div class="relative overflow-hidden h-56">
+              <img
+                src="https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                alt="Tailwind CSS workflow"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                onerror="this.src='https://via.placeholder.com/800x600/1f2937/ffffff?text=Tailwind+CSS'; this.onerror=null;"
+              />
+              <span class="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">TUTORIAL</span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition">
+                Mastering Tailwind CSS: From Zero to Hero
+              </h3>
+              <p class="text-gray-600 text-sm line-clamp-2">
+                Learn utility-first CSS to build modern, responsive designs faster than ever.
+              </p>
+              <div class="mt-4 flex items-center text-sm text-muted">
+                <span>Nov 10, 2025</span>
+                <span class="mx-2">•</span>
+                <span>8 min read</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="bg-white rounded-2xl overflow-hidden shadow-card hover-lift cursor-pointer group">
+            <div class="relative overflow-hidden h-56">
+              <img
+                src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                alt="Design system components"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                onerror="this.src='https://via.placeholder.com/800x600/1f2937/ffffff?text=Design+System'; this.onerror=null;"
+              />
+              <span class="absolute top-4 left-4 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full">DESIGN</span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition">
+                Building Scalable Design Systems in 2025
+              </h3>
+              <p class="text-gray-600 text-sm line-clamp-2">
+                Create consistent, maintainable UI with atomic design and component libraries.
+              </p>
+              <div class="mt-4 flex items-center text-sm text-muted">
+                <span>Nov 8, 2025</span>
+                <span class="mx-2">•</span>
+                <span>12 min read</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="bg-white rounded-2xl overflow-hidden shadow-card hover-lift cursor-pointer group">
+            <div class="relative overflow-hidden h-56">
+              <img
+                src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                alt="AI in development"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                onerror="this.src='https://via.placeholder.com/800x600/1f2937/ffffff?text=AI+Dev'; this.onerror=null;"
+              />
+              <span class="absolute top-4 left-4 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full">AI</span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition">
+                How AI is Transforming Web Development
+              </h3>
+              <p class="text-gray-600 text-sm line-clamp-2">
+                From code generation to design automation — the future is here.
+              </p>
+              <div class="mt-4 flex items-center text-sm text-muted">
+                <span>Nov 5, 2025</span>
+                <span class="mx-2">•</span>
+                <span>10 min read</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories -->
+    <section id="categories" class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-10 text-gray-900">Categories</h2>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="#" class="category-badge bg-orange-50 text-orange-700 px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-orange-100 hover:shadow-md transition flex items-center gap-2 border border-orange-200">
+            <div class="w-5 h-5 bg-orange-500 rounded-full"></div>
+            Web Development
+          </a>
+          <a href="#" class="category-badge bg-emerald-50 text-emerald-700 px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-emerald-100 hover:shadow-md transition flex items-center gap-2 border border-emerald-200">
+            <div class="w-5 h-5 bg-emerald-500 rounded-full"></div>
+            UI/UX Design
+          </a>
+          <a href="#" class="category-badge bg-blue-50 text-blue-700 px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-blue-100 hover:shadow-md transition flex items-center gap-2 border border-blue-200">
+            <div class="w-5 h-5 bg-blue-500 rounded-full"></div>
+            Technology
+          </a>
+          <a href="#" class="category-badge bg-purple-50 text-purple-700 px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-purple-100 hover:shadow-md transition flex items-center gap-2 border border-purple-200">
+            <div class="w-5 h-5 bg-purple-500 rounded-full"></div>
+            Career
+          </a>
+          <a href="#" class="category-badge bg-rose-50 text-rose-700 px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-rose-100 hover:shadow-md transition flex items-center gap-2 border border-rose-200">
+            <div class="w-5 h-5 bg-rose-500 rounded-full"></div>
+            Open Source
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent Posts -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-900">Recent Posts</h2>
+        <div class="max-w-3xl mx-auto space-y-8">
+          <!-- Post 1 -->
+          <article class="bg-white p-6 rounded-xl shadow-card hover:shadow-md transition-shadow border border-gray-100">
+            <div class="flex gap-4">
+              <img
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=80&q=80"
+                alt="Sarah Chen"
+                class="w-16 h-16 rounded-full object-cover ring-2 ring-gray-200 flex-shrink-0"
+                onerror="this.src='https://via.placeholder.com/80/1f2937/ffffff?text=SC'; this.onerror=null;"
+              />
+              <div class="flex-1">
+                <div class="flex items-center gap-2 text-sm text-muted mb-2">
+                  <span class="font-medium text-gray-700">Sarah Chen</span>
+                  <span>•</span>
+                  <time>Nov 9, 2025</time>
+                  <span>•</span>
+                  <span>6 min read</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2 hover:text-primary transition cursor-pointer">
+                  Why React Server Components Are a Game Changer
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                  Deep dive into RSC architecture, streaming, and how it's reshaping modern web apps.
+                </p>
+                <a href="#" class="inline-block mt-3 text-primary font-medium text-sm hover:underline">
+                  Read more
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Post 2 -->
+          <article class="bg-white p-6 rounded-xl shadow-card hover:shadow-md transition-shadow border border-gray-100">
+            <div class="flex gap-4">
+              <img
+                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=80&q=80"
+                alt="Mike Torres"
+                class="w-16 h-16 rounded-full object-cover ring-2 ring-gray-200 flex-shrink-0"
+                onerror="this.src='https://via.placeholder.com/80/1f2937/ffffff?text=MT'; this.onerror=null;"
+              />
+              <div class="flex-1">
+                <div class="flex items-center gap-2 text-sm text-muted mb-2">
+                  <span class="font-medium text-gray-700">Mike Torres</span>
+                  <span>•</span>
+                  <time>Nov 7, 2025</time>
+                  <span>•</span>
+                  <span>5 min read</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2 hover:text-primary transition cursor-pointer">
+                  Building Accessible Forms: Best Practices 2025
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                  From ARIA labels to keyboard navigation — ensure your forms work for everyone.
+                </p>
+                <a href="#" class="inline-block mt-3 text-primary font-medium text-sm hover:underline">
+                  Read more
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Post 3 -->
+          <article class="bg-white p-6 rounded-xl shadow-card hover:shadow-md transition-shadow border border-gray-100">
+            <div class="flex gap-4">
+              <img
+                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=80&q=80"
+                alt="Alex Kim"
+                class="w-16 h-16 rounded-full object-cover ring-2 ring-gray-200 flex-shrink-0"
+                onerror="this.src='https://via.placeholder.com/80/1f2937/ffffff?text=AK'; this.onerror=null;"
+              />
+              <div class="flex-1">
+                <div class="flex items-center gap-2 text-sm text-muted mb-2">
+                  <span class="font-medium text-gray-700">Alex Kim</span>
+                  <span>•</span>
+                  <time>Nov 5, 2025</time>
+                  <span>•</span>
+                  <span>9 min read</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2 hover:text-primary transition cursor-pointer">
+                  The State of Web Performance in 2025
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                  Core Web Vitals, edge computing, and why 100ms still matters more than ever.
+                </p>
+                <a href="#" class="inline-block mt-3 text-primary font-medium text-sm hover:underline">
+                  Read more
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="text-center mt-12">
+          <a href="#" class="inline-flex items-center px-6 py-3 bg-primary text-white font-bold rounded-xl shadow-md hover:shadow-lg hover:bg-orange-700 transition">
+            View All Posts
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section id="newsletter" class="py-20 bg-gradient-to-r from-primary to-red-600 text-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Stay in the Loop</h2>
+        <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+          Join 12,000+ developers getting weekly insights on code, design, and tech.
+        </p>
+        <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+          <input
+            type="email"
+            placeholder="you@example.com"
+            required
+            class="flex-1 px-5 py-3 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-white/30"
+          />
+          <button
+            type="submit"
+            class="px-6 py-3 bg-white text-primary font-bold rounded-xl hover:bg-gray-100 shadow-lg hover:shadow-xl transition"
+          >
+            Subscribe
+          </button>
+        </form>
+        <p class="mt-4 text-sm opacity-75">No spam. Unsubscribe anytime.</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-2xl font-bold text-white mb-4">
+              <span class="gradient-text">DevPulse</span>
+            </h3>
+            <p class="text-sm">Your source for modern web development and design innovation.</p>
+          </div>
+          <div>
+            <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Quick Links</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="#" class="hover:text-white transition">About</a></li>
+              <li><a href="#" class="hover:text-white transition">Write for Us</a></li>
+              <li><a href="#" class="hover:text-white transition">Privacy</a></li>
+              <li><a href="#" class="hover:text-white transition">Terms</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Categories</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="#" class="hover:text-white transition">Web Dev</a></li>
+              <li><a href="#" class="hover:text-white transition">Design</a></li>
+              <li><a href="#" class="hover:text-white transition">AI</a></li>
+              <li><a href="#" class="hover:text-white transition">Career</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Follow</h4>
+            <div class="flex space-x-3">
+              <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.557 2.212 9.054 0 14.002-7.496 14.002-13.986 0-.21 0-.423-.015-.634.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg>
+              </a>
+              <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.04c-5.5 0-9.96 4.46-9.96 9.96 0 4.41 2.86 8.14 6.84 9.49.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1.01.07 1.54 1.04 1.54 1.04.9 1.54 2.36 1.1 2.94.84.09-.65.35-1.1.63-1.35-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48 3.97-1.35 6.83-5.08 6.83-9.49 0-5.5-4.46-9.96-9.96-9.96z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="mt-8 pt-8 border-t border-gray-800 text-center text-sm">
+          <p>© 2025 DevPulse. All rights reserved. Made with <span class="text-red-500">❤️</span> in Nairobi, Kenya.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('menuBtn').addEventListener('click', () => {
+        document.getElementById('mobileNav').classList.toggle('hidden');
+      });
+    </script>
+  </body>
+</html>
