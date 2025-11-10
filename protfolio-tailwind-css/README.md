@@ -12,9 +12,9 @@ A simple, responsive portfolio website built with Tailwind CSS.
 
 ## Screenshot
 
-![Portfolio Screenshot](screenshot.png)
+![Portfolio Screenshot](portfolio-Screenshot_11-11-2025.jpeg)
 
-*Screenshot showing the responsive portfolio design with header, hero section, skills, projects, and contact form.*
+_Screenshot showing the responsive portfolio design with header, hero section, skills, projects, and contact form._
 
 ## Technologies Used
 
