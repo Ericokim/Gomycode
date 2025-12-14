@@ -4,61 +4,13 @@ This project contains JavaScript implementations of essential string manipulatio
 
 ## Project Structure
 
-The project consists of three main files:
-
-- `string.js` — String manipulation functions
-- `array.js` — Array operation functions
-- `math.js` — Mathematical calculation functions
-
----
-
-## ✅ Implemented Functions
-
-### 📝 String Manipulation Functions (`string.js`)
-
-1. **reverseString(str)** — Reverses a given string
-
-   - Example: `"hello"` → `"olleh"`
-
-2. **countCharacters(str)** — Counts the number of characters in a string
-
-   - Example: `"hello"` → `5`
-
-3. **capitalizeWords(sentence)** — Capitalizes the first letter of each word
-   - Example: `"hello world"` → `"Hello World"`
-
-### 📊 Array Functions (`array.js`)
-
-1. **findMax(arr)** — Finds the maximum value in an array
-
-   - Example: `[5, 2, 8, 1, 9]` → `9`
-
-2. **findMin(arr)** — Finds the minimum value in an array
-
-   - Example: `[5, 2, 8, 1, 9]` → `1`
-
-3. **sumArray(arr)** — Calculates the sum of all elements in an array
-
-   - Example: `[1, 2, 3, 4, 5]` → `15`
-
-4. **filterArray(arr, condition)** — Filters array elements based on a condition
-   - Example: `filterArray([1,2,3,4,5], num => num > 3)` → `[4, 5]`
-
-### 🔢 Mathematical Functions (`math.js`)
-
-1. **factorial(n)** — Calculates the factorial of a number
-
-   - Example: `factorial(5)` → `120` (5 × 4 × 3 × 2 × 1)
-
-2. **isPrime(num)** — Checks if a number is prime
-
-   - Example: `isPrime(7)` → `true`
-
-3. **fibonacci(n)** — Generates Fibonacci sequence up to n terms
-   - Example: `fibonacci(8)` → `[0, 1, 1, 2, 3, 5, 8, 13]`
+string-math-array/
+├── string.js       # String manipulation functions
+├── array.js        # Array operation functions
+├── math.js         # Mathematical calculation functions
+└── README.md       # Project documentation
 
 ---
-
 ## 🚀 How to Run
 
 From the project folder, run each file individually:
@@ -75,15 +27,6 @@ node math.js
 ```
 
 Each file includes built-in test cases that will display results in the console.
-
----
-
-## 📋 Features
-
-- ✅ **Error Handling**: All functions validate inputs and handle edge cases
-- ✅ **Clear Comments**: Each function is documented with explanations
-- ✅ **Test Examples**: Built-in tests demonstrate functionality
-- ✅ **Beginner Friendly**: Code written to be understood by junior developers
 
 ---
 
@@ -192,7 +135,7 @@ All required functions have been implemented, tested, and documented according t
 
 ## 👨‍💻 Author
 
-**Eric Ochieng**  
+**Eric Kimathi**  
 GoMyCode Checkpoint Assignment  
 Date: December 2025
 
@@ -204,14 +147,6 @@ Date: December 2025
 - MDN Web Docs - JavaScript Array Methods
 - Mathematical algorithms research for Fibonacci sequence
 - JavaScript best practices for error handling
-
----
-
-## ⚠️ Submission Deadline
-
-**Deadline:** December 15, 2025
-
-> **Note:** According to checkpoint rules, late submissions may receive a score of 0. This assignment was completed on time.
 
 ---
 
@@ -236,8 +171,4 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-**THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.**
-
 ---
-
-_Feel free to use, modify, and share this code for learning purposes!_
