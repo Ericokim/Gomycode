@@ -1,16 +1,13 @@
 // 1. Reverse a String
 function reverseString(str) {
   if (!str || typeof str !== "string") {
-    return ""; // Return empty string if invalid
+    return ""; 
   }
   return str.split("").reverse().join("");
 }
 
 // 2. Count Characters in a String
-// Returns how many characters are in the string
-
 function countCharacters(str) {
-  // Check if input is valid
   if (!str || typeof str !== "string") {
     return 0; // Return 0 if invalid
   }
@@ -19,9 +16,8 @@ function countCharacters(str) {
 
 // 3. Capitalize the First Letter of Each Words
 function capitalizeWords(sentence) {
-  // Check if input is valid
   if (!sentence || typeof sentence !== "string") {
-    return ""; // Return empty string if invalid
+    return ""; 
   }
   return sentence
     .split(" ")

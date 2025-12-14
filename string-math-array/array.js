@@ -1,39 +1,34 @@
 // 1. Find Maximum Value in an Array
 function findMax(arr) {
   if (!Array.isArray(arr) || arr.length === 0) {
-    return undefined; // Return undefined if invalid
+    return undefined; 
   }
   return Math.max(...arr);
 }
 
 // 2. Find Minimum Value in an Array
 function findMin(arr) {
-  // Check if array is valid and not empty
   if (!Array.isArray(arr) || arr.length === 0) {
-    return undefined; // Return undefined if invalid
+    return undefined;
   }
   return Math.min(...arr);
 }
 
 // 3. Sum of All Elements in an Array
 function sumArray(arr) {
-  // Check if array is valid
   if (!Array.isArray(arr)) {
-    return 0; // Return 0 if invalid
+    return 0;
   }
   return arr.reduce((total, num) => total + num, 0);
 }
 
 // 4. Filter Array Based on a Condition
-// Keeps only items that match your condition
 function filterArray(arr, condition) {
-  // Check if array is valid
   if (!Array.isArray(arr)) {
-    return []; // Return empty array if invalid
+    return [];
   }
-  // Check if condition is a function
   if (typeof condition !== "function") {
-    return arr; // Return original array if no valid condition
+    return arr;
   }
   return arr.filter(condition);
 }

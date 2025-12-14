@@ -1,59 +1,46 @@
-
-
 // 1. Factorial of a Number
 function factorial(n) {
-  // Check for negative numbers
   if (n < 0) {
-    return undefined; // Factorial doesn't work with negatives
+    return undefined;
   }
-  // Base case: 0! = 1 and 1! = 1
   if (n === 0 || n === 1) {
     return 1;
   }
-  // Recursive call: n! = n × (n-1)!
   return n * factorial(n - 1);
 }
 
 // 2. Prime Number Check
-
 function isPrime(num) {
-  // Numbers less than 2 are not prime
   if (num <= 1) return false;
-  // 2 is the only even prime
   if (num === 2) return true;
-  // All other even numbers are not prime
   if (num % 2 === 0) return false;
 
   // Check odd numbers up to square root
   for (let i = 2; i <= Math.sqrt(num); i++) {
     if (num % i === 0) {
-      return false; // Found a divisor, not prime
+      return false;
     }
   }
-  return true; // No divisors found, is prime
+  return true;
 }
 
 // 3. Fibonacci Sequence (up to n terms)
-// Each number is the sum of the previous two
-
 function fibonacci(n) {
-  // Check for invalid input
   if (n <= 0) {
-    return []; // Return empty array if n is 0 or negative
+    return [];
   }
 
   const sequence = [];
-  let a = 0, // First number
-    b = 1; // Second number
+  let a = 0,
+    b = 1;
 
   for (let i = 0; i < n; i++) {
-    sequence.push(a); // Add current number
-    [a, b] = [b, a + b]; // Update: a becomes b, b becomes a+b
+    sequence.push(a);
+    [a, b] = [b, a + b];
   }
 
   return sequence;
 }
-
 
 // Test factorial
 console.log("\n1. Factorial:");
