@@ -2,16 +2,68 @@
 
 This project contains JavaScript implementations of essential string manipulation, array operations, and mathematical functions as part of the GoMyCode checkpoint assignment.
 
-## Project Structure
+---
 
+##  Project Structure
+
+```
 string-math-array/
 ├── string.js       # String manipulation functions
 ├── array.js        # Array operation functions
 ├── math.js         # Mathematical calculation functions
 └── README.md       # Project documentation
+```
 
 ---
-## 🚀 How to Run
+
+## Implemented Functions
+
+### String Manipulation Functions (`string.js`)
+
+1. **reverseString(str)** — Reverses a given string
+
+   - Example: `"hello"` → `"olleh"`
+
+2. **countCharacters(str)** — Counts the number of characters in a string
+
+   - Example: `"hello"` → `5`
+
+3. **capitalizeWords(sentence)** — Capitalizes the first letter of each word
+   - Example: `"hello world"` → `"Hello World"`
+
+###  Array Functions (`array.js`)
+
+1. **findMax(arr)** — Finds the maximum value in an array
+
+   - Example: `[5, 2, 8, 1, 9]` → `9`
+
+2. **findMin(arr)** — Finds the minimum value in an array
+
+   - Example: `[5, 2, 8, 1, 9]` → `1`
+
+3. **sumArray(arr)** — Calculates the sum of all elements in an array
+
+   - Example: `[1, 2, 3, 4, 5]` → `15`
+
+4. **filterArray(arr, condition)** — Filters array elements based on a condition
+   - Example: `filterArray([1,2,3,4,5], num => num > 3)` → `[4, 5]`
+
+### Mathematical Functions (`math.js`)
+
+1. **factorial(n)** — Calculates the factorial of a number
+
+   - Example: `factorial(5)` → `120` (5 × 4 × 3 × 2 × 1)
+
+2. **isPrime(num)** — Checks if a number is prime
+
+   - Example: `isPrime(7)` → `true`
+
+3. **fibonacci(n)** — Generates Fibonacci sequence up to n terms
+   - Example: `fibonacci(8)` → `[0, 1, 1, 2, 3, 5, 8, 13]`
+
+---
+
+## How to Run
 
 From the project folder, run each file individually:
 
@@ -26,11 +78,18 @@ node array.js
 node math.js
 ```
 
-Each file includes built-in test cases that will display results in the console.
+---
+
+##  Features
+
+- ✅ **Error Handling**: All functions validate inputs and handle edge cases
+- ✅ **Clear Comments**: Each function is documented with explanations
+- ✅ **Test Examples**: Built-in tests demonstrate functionality
+- ✅ **Beginner Friendly**: Code written to be understood by junior developers
 
 ---
 
-## 📝 Sample Output
+##  Sample Output
 
 ### String Functions
 
@@ -81,9 +140,7 @@ fibonacci(8): [0, 1, 1, 2, 3, 5, 8, 13]
 
 ---
 
----
-
-## 📊 Evaluation Checklist
+##  Evaluation Checklist
 
 This checkpoint is evaluated based on the following criteria (0-5 points each):
 
@@ -118,7 +175,7 @@ This checkpoint is evaluated based on the following criteria (0-5 points each):
 
 ---
 
-## 🎯 Assignment Status
+##  Assignment Status
 
 **Status:** ✅ **COMPLETED**
 
@@ -133,7 +190,7 @@ All required functions have been implemented, tested, and documented according t
 
 ---
 
-## 👨‍💻 Author
+##  Author
 
 **Eric Kimathi**  
 GoMyCode Checkpoint Assignment  
@@ -141,7 +198,7 @@ Date: December 2025
 
 ---
 
-## 📚 Resources Used
+##  Resources Used
 
 - MDN Web Docs - JavaScript String Methods
 - MDN Web Docs - JavaScript Array Methods
@@ -152,12 +209,9 @@ Date: December 2025
 
 ## 🔗 Repository
 
-Repository: `Gomycode/string-math-array`  
-Branch: `master`
-
----
-
-_This project demonstrates fundamental JavaScript skills including functions, loops, conditionals, array methods, and algorithmic thinking._
+**Repository:** `Gomycode/string-math-array`  
+**Branch:** `master`  
+**Author:** Eric Ochieng (Ericokim)
 
 ---
 
@@ -170,5 +224,6 @@ Copyright (c) 2025 Eric Ochieng
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
 
 ---
