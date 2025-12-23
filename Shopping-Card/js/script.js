@@ -1,10 +1,13 @@
+
 document.addEventListener("DOMContentLoaded", function () {
+  // Get all the buttons and elements we need
   const plusButtons = document.querySelectorAll(".fa-plus-circle");
   const minusButtons = document.querySelectorAll(".fa-minus-circle");
   const deleteButtons = document.querySelectorAll(".fa-trash-alt");
   const heartButtons = document.querySelectorAll(".fa-heart");
   const totalPriceElement = document.querySelector(".total");
 
+  // Calculate and update the total price
   function updateTotalPrice() {
     let total = 0;
     const cards = document.querySelectorAll(".list-products > .card-body");
@@ -19,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     totalPriceElement.textContent = total + " $";
   }
 
+  // Plus button: increase quantity by 1
   plusButtons.forEach((button, index) => {
     button.addEventListener("click", function () {
       const card = button.closest(".card-body");
@@ -30,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  // Minus button: decrease quantity by 1 but it won't go below 0
   minusButtons.forEach((button, index) => {
     button.addEventListener("click", function () {
       const card = button.closest(".card-body");
@@ -43,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  // Delete button: remove item from cart
   deleteButtons.forEach((button, index) => {
     button.addEventListener("click", function () {
       const cardContainer = button.closest(".list-products > .card-body");
@@ -51,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  // Heart button: toggle like on/off
   heartButtons.forEach((button, index) => {
     button.addEventListener("click", function () {
       if (button.style.color === "red") {
