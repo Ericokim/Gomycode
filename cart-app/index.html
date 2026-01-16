@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shopping Cart - Checkpoint</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <main class="cart">
+      <h1>Your Cart</h1>
+
+      <ul class="cart-list">
+        <!-- Item 1 -->
+        <li class="cart-item" data-price="29.99">
+          <img
+            class="item-img"
+            src="assets/images/handbag.jpg"
+            alt="Handbag"
+            onerror="this.onerror=null;this.src='https://via.placeholder.com/120?text=Handbag';"
+          />
+          <div class="item-info">
+            <h2 class="item-title">Handbag</h2>
+            <p class="item-price">$29.99</p>
+            <div class="controls">
+              <button class="qty-btn minus" aria-label="Decrease quantity">
+                ➖
+              </button>
+              <span class="qty">1</span>
+              <button class="qty-btn plus" aria-label="Increase quantity">
+                ➕
+              </button>
+            </div>
+          </div>
+          <div class="actions">
+            <button
+              class="like-btn"
+              aria-label="Like item"
+              aria-pressed="false"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M12 21s-7.5-4.35-10-7.05C-0.5 10.95 2 6 6 6c2.24 0 3.5 1.48 4 2.27C10.5 7.48 11.76 6 14 6c4 0 6.5 4.95 4 7.95C19.5 16.65 12 21 12 21z"
+                />
+              </svg>
+            </button>
+            <button class="delete-btn" aria-label="Delete item">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </li>
+
+        <!-- Item 2 -->
+        <li class="cart-item" data-price="49.50">
+          <img
+            class="item-img"
+            src="assets/images/sneaker.jpg"
+            alt="Sneakers"
+            onerror="this.onerror=null;this.src='https://via.placeholder.com/80?text=Sneakers';"
+          />
+          <div class="item-info">
+            <h2 class="item-title">Sneakers</h2>
+            <p class="item-price">$49.50</p>
+            <div class="controls">
+              <button class="qty-btn minus" aria-label="Decrease quantity">
+                ➖
+              </button>
+              <span class="qty">2</span>
+              <button class="qty-btn plus" aria-label="Increase quantity">
+                ➕
+              </button>
+            </div>
+          </div>
+          <div class="actions">
+            <button
+              class="like-btn"
+              aria-label="Like item"
+              aria-pressed="false"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M12 21s-7.5-4.35-10-7.05C-0.5 10.95 2 6 6 6c2.24 0 3.5 1.48 4 2.27C10.5 7.48 11.76 6 14 6c4 0 6.5 4.95 4 7.95C19.5 16.65 12 21 12 21z"
+                />
+              </svg>
+            </button>
+            <button class="delete-btn" aria-label="Delete item">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </li>
+
+        <!-- Item 3 -->
+        <li class="cart-item" data-price="15.00">
+          <img
+            class="item-img"
+            src="assets/images/socks.jpg"
+            alt="Socks (3-pack)"
+            onerror="this.onerror=null;this.src='https://via.placeholder.com/80?text=Socks';"
+          />
+          <div class="item-info">
+            <h2 class="item-title">Socks (3-pack)</h2>
+            <p class="item-price">$15.00</p>
+            <div class="controls">
+              <button class="qty-btn minus" aria-label="Decrease quantity">
+                ➖
+              </button>
+              <span class="qty">3</span>
+              <button class="qty-btn plus" aria-label="Increase quantity">
+                ➕
+              </button>
+            </div>
+          </div>
+          <div class="actions">
+            <button
+              class="like-btn"
+              aria-label="Like item"
+              aria-pressed="false"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  fill="currentColor"
+                  d="M12 21s-7.5-4.35-10-7.05C-0.5 10.95 2 6 6 6c2.24 0 3.5 1.48 4 2.27C10.5 7.48 11.76 6 14 6c4 0 6.5 4.95 4 7.95C19.5 16.65 12 21 12 21z"
+                />
+              </svg>
+            </button>
+            <button class="delete-btn" aria-label="Delete item">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </li>
+      </ul>
+
+      <div class="cart-footer">
+        <div class="total-label">Total</div>
+        <div class="total-amount">$0.00</div>
+      </div>
+
+      <div id="cart-debug" class="cart-debug" aria-hidden="false">
+        Items: 0 • Total: $0.00
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
