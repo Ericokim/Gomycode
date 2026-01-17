@@ -1,0 +1,509 @@
+/* Reset and Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Body with soft, eye-friendly gradient background */
+body {
+  font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(
+    135deg,
+    #ffd6e8,
+    #c1e7ff,
+    #fff5e6
+  ); /* Soft pink, blue, and cream gradient */
+  color: #4a4a4a; /* Soft dark gray for text */
+  min-height: 100vh;
+  padding: 20px;
+  transition: background 0.3s ease;
+}
+
+/* Header - Stylish banner with cart button */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 20px 30px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #8e44ad; /* Soft purple */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+}
+
+h1 i {
+  font-size: 2.2rem;
+  animation: bounce 2s infinite;
+}
+
+.tagline {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 300;
+  font-style: italic;
+  margin-left: 50px;
+}
+
+/* Cart toggle button with badge */
+#cart-toggle {
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  color: #8b3a3a; /* Dark red/brown for visibility */
+  border: none;
+  padding: 14px 28px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 4px 15px rgba(255, 154, 158, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+#cart-toggle i {
+  font-size: 1.2rem;
+}
+
+.cart-badge {
+  background: #8b3a3a;
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+#cart-toggle:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(255, 154, 158, 0.5);
+}
+
+/* Product Grid - Horizontal display with flex layout */
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px;
+}
+
+/* Product Card - Soft, friendly design */
+.product-card {
+  background: rgba(255, 255, 255, 0.95);
+  color: #4a4a4a;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  width: 220px;
+  flex-shrink: 0;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  border: 2px solid transparent;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 154, 158, 0.1),
+    transparent
+  );
+  transform: rotate(45deg);
+  transition: all 0.5s ease;
+}
+
+.product-card:hover::before {
+  left: 100%;
+}
+
+.product-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border: 2px solid #ff9a9e;
+}
+
+/* Product Image */
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+.product-card:hover .product-image {
+  transform: scale(1.05);
+}
+
+/* Product name */
+.product-card h3 {
+  margin: 10px 0;
+  color: #5d4e6d;
+  font-size: 1.1rem;
+}
+
+/* Product price */
+.product-card p {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #ff6b9d;
+  margin: 10px 0;
+}
+
+/* Add to Cart button */
+.product-card button {
+  background: linear-gradient(135deg, #a8e6cf, #88d8b0);
+  color: #2d5f4a; /* Dark green for visibility */
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 10px rgba(168, 230, 207, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 auto;
+}
+
+.product-card button i {
+  font-size: 1rem;
+}
+
+.product-card button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(168, 230, 207, 0.5);
+  background: linear-gradient(135deg, #88d8b0, #a8e6cf);
+}
+
+/* Cart Sidebar - Soft, welcoming design */
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: -350px;
+  width: 350px;
+  height: 100%;
+  background: linear-gradient(180deg, #fff5f7, #fffbf0);
+  color: #4a4a4a;
+  padding: 25px;
+  transition: right 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+  overflow-y: auto;
+  border-left: 3px solid #ff9a9e;
+}
+.cart-sidebar.open {
+  right: 0;
+}
+
+/* Cart sidebar heading */
+.cart-sidebar h2 {
+  color: #8e44ad;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart-sidebar h2 i {
+  font-size: 1.3rem;
+}
+
+/* Cart header with close button */
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #ffd6e8;
+}
+
+.close-btn-top {
+  background: transparent;
+  border: none;
+  color: #ff6b9d;
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.close-btn-top:hover {
+  background: #ffe0eb;
+  transform: rotate(90deg);
+}
+
+/* Cart item styling - includes product image */
+.cart-item {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  border: 1px solid #ffd6e8;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+.cart-item:hover {
+  transform: translateX(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Cart item image */
+.cart-item-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+/* Cart item info container */
+.cart-item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Cart item name and price */
+.cart-item-name {
+  font-weight: bold;
+  color: #5d4e6d;
+  font-size: 0.95rem;
+}
+.cart-item-price {
+  color: #ff6b9d;
+  font-size: 0.9rem;
+}
+.cart-item-total {
+  color: #4a4a4a;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Remove button for cart items */
+.remove-btn {
+  background: #ff6b9d;
+  color: white;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+.remove-btn:hover {
+  transform: scale(1.15);
+  background: #ff4d7d;
+}
+
+/* Quantity controls - Plus/minus buttons */
+.quantity-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #f0f8ff;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid #c1e7ff;
+}
+
+.quantity-controls .quantity {
+  font-weight: bold;
+  min-width: 25px;
+  text-align: center;
+  color: #5d4e6d;
+}
+
+.quantity-controls button {
+  background: linear-gradient(135deg, #a8e6cf, #88d8b0);
+  color: #2d5f4a; /* Dark green for visibility */
+  border: none;
+  padding: 4px 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+.quantity-controls button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 8px rgba(168, 230, 207, 0.4);
+}
+/* Cart total display */
+.cart-total {
+  margin: 20px 0;
+  font-size: 1.4rem;
+  color: #5d4e6d;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  border: 2px dashed #ffd6e8;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+
+.cart-total i {
+  color: #ff6b9d;
+  font-size: 1.3rem;
+}
+
+/* Checkout button */
+#checkout-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.05rem;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  background: linear-gradient(135deg, #a8e6cf, #88d8b0);
+  color: #2d5f4a; /* Dark green for visibility */
+  box-shadow: 0 4px 10px rgba(168, 230, 207, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+#checkout-btn i {
+  font-size: 1.1rem;
+}
+
+#checkout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(168, 230, 207, 0.5);
+}
+
+/* Toast Notifications - Friendly pop-up messages */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #a8e6cf, #88d8b0);
+  color: #2d5f4a; /* Dark green for visibility */
+  padding: 15px 30px;
+  border-radius: 25px;
+  opacity: 0;
+  font-weight: bold;
+  box-shadow: 0 5px 20px rgba(168, 230, 207, 0.4);
+  transition: opacity 0.5s ease, transform 0.3s ease;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-10px);
+}
+
+/* Responsiveness - Maintains horizontal scrolling on small screens */
+@media (max-width: 768px) {
+  /* Tablet/Mobile - Enable horizontal scroll for products */
+  .product-grid {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 10px 5px;
+  }
+  .cart-sidebar {
+    width: 100%;
+    right: -100%;
+  }
+  header {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  h1 {
+    font-size: 1.8rem;
+  }
+}
+@media (max-width: 480px) {
+  /* Small Mobile */
+  body {
+    padding: 10px;
+  }
+  .product-card {
+    padding: 15px;
+    width: 180px;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Bounce Animation for Sidebar (enhances the slide-in) */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.cart-sidebar.open {
+  animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+  from {
+    right: -350px;
+  }
+  to {
+    right: 0;
+  }
+}

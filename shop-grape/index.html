@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop Grape</title>
+    <!-- Font Awesome Icon Toolkit -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <!-- Google Fonts for Enhanced Typography -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <h1><i class="fas fa-store"></i> Shop Grape</h1>
+        <p class="tagline">Your Premium Shopping Experience</p>
+      </div>
+      <button id="cart-toggle">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-text">Cart</span>
+        <span class="cart-badge">0</span>
+      </button>
+    </header>
+
+    <main class="product-grid">
+      <!-- Products will be dynamically added here via JS -->
+    </main>
+
+    <aside id="cart-sidebar" class="cart-sidebar">
+      <div class="cart-header">
+        <h2><i class="fas fa-shopping-bag"></i> Your Cart</h2>
+        <button id="close-cart" class="close-btn-top">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <ul id="cart-items"></ul>
+      <div class="cart-total">
+        <i class="fas fa-receipt"></i>
+        <strong>Total: $</strong><span id="cart-total-price">0.00</span>
+      </div>
+      <button id="checkout-btn">
+        <i class="fas fa-credit-card"></i> Checkout
+      </button>
+    </aside>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
