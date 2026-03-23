@@ -2,6 +2,8 @@
 
 ## Graph Basics and Traversal
 
+[Source Code](./index.js)
+
 ### Objective
 
 The aim of this assignment is to implement a graph in JavaScript using an adjacency list. The graph should support basic operations such as adding edges, removing edges, checking whether an edge exists, and printing the graph. In addition, the graph should support traversal using both Depth-First Search (DFS) and Breadth-First Search (BFS). The solution should work for both directed and undirected graphs.
