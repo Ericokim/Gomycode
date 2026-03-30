@@ -1,6 +1,4 @@
-# Applied Algorithms in Software Development
-
-## Checkpoint: Implementing Dijkstra's Algorithm in JavaScript
+# Implementing Dijkstra's Algorithm in JavaScript
 
 ## Objective
 
