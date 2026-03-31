@@ -7,18 +7,24 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- Main app container -->
     <main class="app">
+      <!-- Page heading -->
       <h1>Student Manager</h1>
+      <p class="subtitle">View all students or only the ones who passed.</p>
 
+      <!-- Action buttons -->
       <div class="actions">
         <button id="show-all">List All Students</button>
         <button id="show-passed">List Passed Students</button>
       </div>
 
+      <!-- JavaScript updates these elements -->
       <p id="average-grade" class="average"></p>
       <div id="results" class="results"></div>
     </main>
 
+    <!-- Load the main JavaScript file as a module -->
     <script type="module" src="main.js"></script>
   </body>
 </html>
