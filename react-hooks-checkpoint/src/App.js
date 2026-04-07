@@ -1,31 +1,39 @@
 import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import Filter from "./components/Filter";
+import MovieDetails from "./components/MovieDetails";
 import MovieList from "./components/MovieList";
 
 const initialMovies = [
   {
+    id: 1,
     title: "Inception",
     description:
       "A skilled thief enters dreams to steal secrets and plant an idea.",
     posterURL:
       "https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=900&q=80",
     rating: 5,
+    trailerLink: "https://www.youtube.com/embed/YoHD9XEInc0",
   },
   {
+    id: 2,
     title: "Breaking Bad",
     description:
       "A chemistry teacher turns to crime after a life-changing diagnosis.",
     posterURL:
       "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=900&q=80",
     rating: 4,
+    trailerLink: "https://www.youtube.com/embed/HhesaQXLuRY",
   },
   {
+    id: 3,
     title: "Interstellar",
     description:
       "A team of explorers travels through a wormhole to save humanity.",
     posterURL:
       "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=900&q=80",
     rating: 5,
+    trailerLink: "https://www.youtube.com/embed/zSWdZVtXT7E",
   },
 ];
 
@@ -37,6 +45,7 @@ function App() {
     description: "",
     posterURL: "",
     rating: "",
+    trailerLink: "",
   });
 
   const filteredMovies = movies.filter((movie) => {
@@ -73,7 +82,8 @@ function App() {
       !newMovie.title.trim() ||
       !newMovie.description.trim() ||
       !newMovie.posterURL.trim() ||
-      !newMovie.rating
+      !newMovie.rating ||
+      !newMovie.trailerLink.trim()
     ) {
       return;
     }
@@ -81,10 +91,12 @@ function App() {
     setMovies((currentMovies) => [
       {
         ...newMovie,
+        id: Date.now(),
         title: newMovie.title.trim(),
         description: newMovie.description.trim(),
         posterURL: newMovie.posterURL.trim(),
         rating: Number(newMovie.rating),
+        trailerLink: newMovie.trailerLink.trim(),
       },
       ...currentMovies,
     ]);
@@ -94,22 +106,56 @@ function App() {
       description: "",
       posterURL: "",
       rating: "",
+      trailerLink: "",
     });
   };
 
   return (
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <HomePage
+            filteredMovies={filteredMovies}
+            filters={filters}
+            newMovie={newMovie}
+            onAddMovie={handleAddMovie}
+            onFilterChange={handleFilterChange}
+            onNewMovieChange={handleNewMovieChange}
+          />
+        }
+      />
+      <Route
+        path="/movies/:movieId"
+        element={<MovieDetails movies={movies} />}
+      />
+    </Routes>
+  );
+}
+
+export default App;
+
+function HomePage({
+  filteredMovies,
+  filters,
+  newMovie,
+  onAddMovie,
+  onFilterChange,
+  onNewMovieChange,
+}) {
+  return (
     <main className={styles.page}>
       <section className={styles.container}>
         <div className={styles.hero}>
-          <p className={styles.eyebrow}>React Hooks Checkpoint</p>
+          <p className={styles.eyebrow}>React Router Checkpoint</p>
           <h1 className={styles.title}>Movie Hub</h1>
           <p className={styles.subtitle}>
-            Add your favorite movies or shows and filter them by title or
-            rating.
+            Add your favorite movies, save a trailer link, and open a details
+            page for each card.
           </p>
         </div>
 
-        <Filter filters={filters} onFilterChange={handleFilterChange} />
+        <Filter filters={filters} onFilterChange={onFilterChange} />
 
         <section className={styles.formSection}>
           <div className={styles.sectionHeader}>
@@ -119,14 +165,14 @@ function App() {
             </p>
           </div>
 
-          <form className={styles.form} onSubmit={handleAddMovie}>
+          <form className={styles.form} onSubmit={onAddMovie}>
             <input
               className={styles.input}
               type="text"
               name="title"
               placeholder="Movie title"
               value={newMovie.title}
-              onChange={handleNewMovieChange}
+              onChange={onNewMovieChange}
             />
             <input
               className={styles.input}
@@ -134,7 +180,7 @@ function App() {
               name="posterURL"
               placeholder="Poster URL"
               value={newMovie.posterURL}
-              onChange={handleNewMovieChange}
+              onChange={onNewMovieChange}
             />
             <input
               className={styles.input}
@@ -144,14 +190,22 @@ function App() {
               max="5"
               placeholder="Rating"
               value={newMovie.rating}
-              onChange={handleNewMovieChange}
+              onChange={onNewMovieChange}
+            />
+            <input
+              className={styles.input}
+              type="text"
+              name="trailerLink"
+              placeholder="YouTube embed trailer link"
+              value={newMovie.trailerLink}
+              onChange={onNewMovieChange}
             />
             <textarea
               className={styles.textarea}
               name="description"
               placeholder="Movie description"
               value={newMovie.description}
-              onChange={handleNewMovieChange}
+              onChange={onNewMovieChange}
               rows="4"
             />
             <button className={styles.button} type="submit">
@@ -165,8 +219,6 @@ function App() {
     </main>
   );
 }
-
-export default App;
 
 const styles = {
   page: "min-h-screen bg-[#f5efe6] px-4 py-10 text-slate-900",

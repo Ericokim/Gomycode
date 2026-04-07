@@ -21,7 +21,7 @@ function MovieList({ movies }) {
 
       <div className={styles.grid}>
         {movies.map((movie) => (
-          <MovieCard key={`${movie.title}-${movie.posterURL}`} movie={movie} />
+          <MovieCard key={movie.id} movie={movie} />
         ))}
       </div>
     </section>
