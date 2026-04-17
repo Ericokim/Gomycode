@@ -4,10 +4,42 @@ This is a simple Slack bot built with Node.js, TypeScript, and Bolt.
 
 ## What It Does
 
-- Connects to Slack with Bolt
+- Connects to Slack with Bolt via Socket Mode
 - Logs incoming message text in subscribed channels
 - Responds when a user sends `hello`
 - Responds to the `/hello` slash command
+
+## Proof of Work
+
+### Bot in Action
+
+The bot was added to `#new-channel` and tested with both the `/hello` slash command and regular `hello` messages:
+
+![Slack Bot Proof](assets/slack-bot-proof.png)
+
+**What's happening in the screenshot:**
+1. `erickims08` mentioned `@Slack_Bot App` to invite the bot to `#new-channel`
+2. The bot was added to the channel
+3. `/hello` command was used — bot responded: *"Hello, erickims08. Your Slack bot is working."*
+4. `hello` was typed as a regular message — bot replied: *"Hello from your Bolt bot."*
+5. `hi there` + `hello` were sent — bot replied again to the `hello` keyword
+
+### Terminal Logs
+
+When the bot is running, all activity is logged with timestamps:
+
+```
+[2026-04-17T10:32:51.610Z] [INIT]    Environment variables loaded
+[2026-04-17T10:32:54.087Z] [START]   Slack bot is running in Socket Mode on port 3000
+[2026-04-17T10:32:54.087Z] [START]   Waiting for events from Slack...
+[2026-04-17T10:40:00.000Z] [COMMAND] /hello from @erickims08 in #new-channel
+[2026-04-17T10:40:00.050Z] [COMMAND] /hello responded to @erickims08
+[2026-04-17T10:40:12.000Z] [MESSAGE] <@U0ATJ...> in <#C0ATJ...>: hello
+[2026-04-17T10:40:12.100Z] [MESSAGE] Replied "hello" to <@U0ATJ...>
+[2026-04-17T10:42:05.000Z] [MESSAGE] <@U0ATJ...> in <#C0ATJ...>: hi there
+[2026-04-17T10:42:08.000Z] [MESSAGE] <@U0ATJ...> in <#C0ATJ...>: hello
+[2026-04-17T10:42:08.100Z] [MESSAGE] Replied "hello" to <@U0ATJ...>
+```
 
 ## Install
 
@@ -23,7 +55,14 @@ Create your local environment file:
 cp .env.example .env
 ```
 
-Add your Slack tokens to `.env`.
+Add your Slack tokens to `.env`:
+
+```
+SLACK_BOT_TOKEN=xoxb-your-bot-token
+SLACK_APP_TOKEN=xapp-your-app-level-token
+SLACK_SIGNING_SECRET=your-signing-secret
+PORT=3000
+```
 
 ## Slack App Setup
 
@@ -68,14 +107,16 @@ Type-check the project:
 npm run check
 ```
 
-Build the project:
+Build and run production:
 
 ```bash
 npm run build
+npm start
 ```
 
 ## Expected Behavior
 
 - Sending `hello` in a subscribed channel makes the bot reply.
-- Any text message received by the bot is logged in the terminal.
+- Any text message received by the bot is logged in the terminal with timestamps.
 - Running `/hello` returns a short greeting from the bot.
+- All events (commands, messages, errors) are logged to the console.
