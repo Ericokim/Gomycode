@@ -1,0 +1,30 @@
+{
+  "name": "slack-bot-typescript",
+  "version": "1.0.0",
+  "description": "Simple Slack bot built with Node.js, TypeScript, and Bolt.",
+  "main": "dist/bot.js",
+  "scripts": {
+    "start": "node dist/bot.js",
+    "dev": "tsx src/bot.ts",
+    "build": "tsc",
+    "check": "tsc --noEmit"
+  },
+  "keywords": [
+    "slack",
+    "bolt",
+    "typescript",
+    "node"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@slack/bolt": "^4.7.0",
+    "dotenv": "^17.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2"
+  }
+}
