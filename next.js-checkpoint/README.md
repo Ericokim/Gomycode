@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Checkpoint
 
-## Getting Started
+This project is a personal portfolio website built with Next.js, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## Project Goal
+
+The goal of this checkpoint is to practice building a small multi page application with the Next.js App Router, reusable components, and clean responsive styling.
+
+## Pages
+
+- `Home` page with hero section, featured projects, stats, tech stack, and call to action
+- `About` page with profile summary, journey timeline, skills, education, and work style
+- `Projects` page with filter buttons for full-stack, frontend, and backend work
+- Dynamic project details page at `projects/[slug]`
+- `Contact` page with contact cards and a working client side contact form
+
+## Features
+
+- Built with the Next.js App Router
+- Shared header and footer through the root layout
+- Page metadata set with the Next.js metadata API
+- Reusable components such as `ProjectCard`, `ProjectsGrid`, `SiteHeader`, `SiteFooter`, and `ContactForm`
+- Portfolio data stored in one place in `lib/portfolio-data.ts`
+- Dynamic project pages generated from project slugs
+- Responsive layout for mobile and desktop screens
+- Warm neutral theme using the same amber and slate direction used in `react-hooks-checkpoint` and `todo-state-manager-app`
+
+## Main Files
+
+- `app/layout.tsx`
+  Root layout with shared header, footer, fonts, and metadata
+- `app/page.tsx`
+  Home page
+- `app/about/page.tsx`
+  About page
+- `app/projects/page.tsx`
+  Projects listing page
+- `app/projects/[slug]/page.tsx`
+  Dynamic project details page
+- `app/contact/page.tsx`
+  Contact page
+- `components/`
+  Shared UI components
+- `lib/portfolio-data.ts`
+  Profile, skills, and project data
+- `app/globals.css`
+  Theme variables, animations, and global styles
+
+## Checkpoint Requirements Covered
+
+- Use Next.js for the application structure
+- Create multiple pages with routing
+- Use reusable components
+- Pass and render structured project data
+- Add responsive styling with Tailwind CSS
+- Keep the UI consistent across the app with a shared layout
+
+From the current implementation, the checkpoint requirements appear to be met.
+
+## Run Locally
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Open `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. Run lint checks:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+```
 
-## Learn More
+## Notes
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- The README now matches the actual project instead of the default `create-next-app` template.
+- The current color theme follows the warm off white, amber, and slate look already used in the related checkpoint apps.

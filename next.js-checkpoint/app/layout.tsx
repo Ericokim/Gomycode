@@ -16,11 +16,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Eric Okim | Full-Stack Developer",
-    template: "%s | Eric Okim",
+    default: "Eric Kimathi | Full-Stack Developer",
+    template: "%s | Eric Kimathi",
   },
   description:
-    "Professional portfolio built with Next.js showcasing skills, projects, and contact information.",
+    "Portfolio of Eric Kimathi — full-stack developer building fast, accessible web apps with React, Next.js, and Node.js.",
 };
 
 export default function RootLayout({
