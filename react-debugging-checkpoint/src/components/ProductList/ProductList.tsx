@@ -1,4 +1,3 @@
-import React from 'react';
 import { Product } from '../../types';
 import { ProductCard } from '../ProductCard/ProductCard';
 
@@ -9,25 +8,13 @@ interface ProductListProps {
 
 export function ProductList({ products, onAddToCart }: ProductListProps) {
   return (
-    <div style={styles.grid}>
-      {products.map(product => (
-        <ProductCard
-          key={product.id}
-          product={product}
-          onAddToCart={onAddToCart}
-        />
-      ))}
+    <div className="flex-1 p-6">
+      <h2 className="mb-5 text-lg font-semibold text-slate-900">Products</h2>
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {products.map(product => (
+          <ProductCard key={product.id} product={product} onAddToCart={onAddToCart} />
+        ))}
+      </div>
     </div>
   );
 }
-
-const styles: Record<string, React.CSSProperties> = {
-  grid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
-    gap: '1.5rem',
-    padding: '1.5rem',
-    flex: 1,
-    alignContent: 'start',
-  },
-};

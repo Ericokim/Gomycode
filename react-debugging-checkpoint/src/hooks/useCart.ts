@@ -23,10 +23,7 @@ export function useCart() {
   };
 
   const updateQuantity = (productId: number, quantity: number) => {
-    if (quantity < 1) {
-      removeFromCart(productId);
-      return;
-    }
+    if (quantity < 1) { removeFromCart(productId); return; }
     setCartItems(prev =>
       prev.map(item =>
         item.product.id === productId ? { ...item, quantity } : item
@@ -34,10 +31,7 @@ export function useCart() {
     );
   };
 
-  const total = cartItems.reduce(
-    (sum, item) => sum + item.product.price * item.quantity,
-    0
-  );
+  const total = cartItems.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
 
   return { cartItems, addToCart, removeFromCart, updateQuantity, total };
 }

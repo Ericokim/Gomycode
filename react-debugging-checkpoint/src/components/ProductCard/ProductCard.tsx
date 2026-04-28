@@ -1,4 +1,3 @@
-import React from 'react';
 import { Product } from '../../types';
 
 interface ProductCardProps {
@@ -6,46 +5,36 @@ interface ProductCardProps {
   onAddToCart: (product: Product) => void;
 }
 
+const categoryColors: Record<string, string> = {
+  Electronics: 'bg-violet-50 text-violet-700 border-violet-200',
+  Clothing: 'bg-blue-50 text-blue-700 border-blue-200',
+  Food: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+};
+
 export function ProductCard({ product, onAddToCart }: ProductCardProps) {
   return (
-    <div style={styles.card}>
-      <img src={product.image} alt={product.name} style={styles.image} />
-      <div style={styles.info}>
-        <span style={styles.category}>{product.category}</span>
-        <h3 style={styles.name}>{product.name}</h3>
-        <p style={styles.price}>${product.price.toFixed(2)}</p>
-        <button style={styles.button} onClick={() => onAddToCart(product)}>
+    <article className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-slate-200/60 animate-fade-up">
+      <div className="relative h-48 w-full shrink-0 overflow-hidden">
+        <img
+          src={product.image}
+          alt={product.name}
+          className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 to-transparent" />
+        <span className={`absolute right-3 top-3 rounded-full border px-2.5 py-0.5 text-xs font-semibold ${categoryColors[product.category] ?? 'bg-slate-100 text-slate-700 border-slate-200'}`}>
+          {product.category}
+        </span>
+      </div>
+      <div className="flex flex-1 flex-col gap-3 p-5">
+        <h3 className="text-base font-semibold text-slate-900">{product.name}</h3>
+        <p className="text-xl font-bold text-amber-500">${product.price.toFixed(2)}</p>
+        <button
+          onClick={() => onAddToCart(product)}
+          className="mt-auto rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700 active:scale-95"
+        >
           Add to Cart
         </button>
       </div>
-    </div>
+    </article>
   );
 }
-
-const styles: Record<string, React.CSSProperties> = {
-  card: {
-    border: '1px solid #e0e0e0',
-    borderRadius: '10px',
-    overflow: 'hidden',
-    backgroundColor: 'white',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  image: { width: '100%', height: '180px', objectFit: 'cover' },
-  info: { padding: '1rem', display: 'flex', flexDirection: 'column', gap: '0.4rem', flex: 1 },
-  category: { fontSize: '0.7rem', color: '#888', textTransform: 'uppercase', letterSpacing: '0.05em' },
-  name: { margin: 0, fontSize: '1rem', fontWeight: 600, color: '#1a1a2e' },
-  price: { margin: 0, fontSize: '1.15rem', color: '#e94560', fontWeight: 700 },
-  button: {
-    marginTop: 'auto',
-    padding: '0.6rem',
-    backgroundColor: '#1a1a2e',
-    color: 'white',
-    border: 'none',
-    borderRadius: '6px',
-    cursor: 'pointer',
-    fontWeight: 600,
-    fontSize: '0.9rem',
-  },
-};

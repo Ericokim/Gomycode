@@ -1,4 +1,3 @@
-import React from 'react';
 import { CartItem as CartItemType } from '../../types';
 
 interface CartItemProps {
@@ -10,54 +9,17 @@ interface CartItemProps {
 export function CartItem({ cartItem, onRemove, onUpdateQuantity }: CartItemProps) {
   const { product, quantity } = cartItem;
   return (
-    <div style={styles.row}>
-      <div style={styles.info}>
-        <span style={styles.name}>{product.name}</span>
-        <span style={styles.lineTotal}>${(product.price * quantity).toFixed(2)}</span>
+    <div className="flex flex-col gap-2 border-b border-slate-100 py-3 last:border-0">
+      <div className="flex items-start justify-between gap-2">
+        <span className="flex-1 text-sm font-medium text-slate-800">{product.name}</span>
+        <span className="shrink-0 text-sm font-semibold text-amber-500">${(product.price * quantity).toFixed(2)}</span>
       </div>
-      <div style={styles.controls}>
-        <button style={styles.qtyBtn} onClick={() => onUpdateQuantity(quantity - 1)}>−</button>
-        <span style={styles.qty}>{quantity}</span>
-        <button style={styles.qtyBtn} onClick={() => onUpdateQuantity(quantity + 1)}>+</button>
-        <button style={styles.removeBtn} onClick={onRemove} title="Remove item">✕</button>
+      <div className="flex items-center gap-2">
+        <button onClick={() => onUpdateQuantity(quantity - 1)} className="flex h-6 w-6 items-center justify-center rounded border border-slate-200 bg-white text-sm font-bold text-slate-700 hover:bg-slate-50">−</button>
+        <span className="min-w-[1.5rem] text-center text-sm font-semibold text-slate-800">{quantity}</span>
+        <button onClick={() => onUpdateQuantity(quantity + 1)} className="flex h-6 w-6 items-center justify-center rounded border border-slate-200 bg-white text-sm font-bold text-slate-700 hover:bg-slate-50">+</button>
+        <button onClick={onRemove} className="ml-auto text-slate-300 transition hover:text-rose-400">✕</button>
       </div>
     </div>
   );
 }
-
-const styles: Record<string, React.CSSProperties> = {
-  row: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '0.4rem',
-    padding: '0.75rem 0',
-    borderBottom: '1px solid #eee',
-  },
-  info: { display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' },
-  name: { fontSize: '0.9rem', fontWeight: 500, color: '#1a1a2e', flex: 1, paddingRight: '0.5rem' },
-  lineTotal: { fontSize: '0.9rem', color: '#e94560', fontWeight: 600, whiteSpace: 'nowrap' },
-  controls: { display: 'flex', alignItems: 'center', gap: '0.4rem' },
-  qtyBtn: {
-    width: '26px',
-    height: '26px',
-    border: '1px solid #ddd',
-    borderRadius: '4px',
-    cursor: 'pointer',
-    backgroundColor: 'white',
-    fontWeight: 700,
-    fontSize: '1rem',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  qty: { minWidth: '28px', textAlign: 'center', fontSize: '0.9rem', fontWeight: 600 },
-  removeBtn: {
-    marginLeft: 'auto',
-    background: 'none',
-    border: 'none',
-    cursor: 'pointer',
-    color: '#bbb',
-    fontSize: '1rem',
-    padding: '0 4px',
-  },
-};
