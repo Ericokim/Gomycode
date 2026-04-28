@@ -1,0 +1,66 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="900" rx="40" fill="#F5EFE6"/>
+  <circle cx="188" cy="122" r="180" fill="#F7D37C" fill-opacity="0.35"/>
+  <rect x="64" y="40" width="1272" height="92" rx="28" fill="white"/>
+  <rect x="96" y="66" width="52" height="52" rx="18" fill="#0F172A"/>
+  <text x="111" y="99" fill="#FBBF24" font-family="Arial, sans-serif" font-size="18" font-weight="700">RD</text>
+  <text x="166" y="88" fill="#0F172A" font-family="Arial, sans-serif" font-size="28" font-weight="700">React Debugging Studio</text>
+  <text x="166" y="114" fill="#64748B" font-family="Arial, sans-serif" font-size="16">Checkpoint-ready state and props playground</text>
+  <rect x="1080" y="62" width="104" height="50" rx="18" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="1104" y="82" fill="#64748B" font-family="Arial, sans-serif" font-size="12" font-weight="700">ITEMS</text>
+  <text x="1126" y="103" fill="#0F172A" font-family="Arial, sans-serif" font-size="20" font-weight="700">4</text>
+  <rect x="1198" y="62" width="106" height="50" rx="18" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="1220" y="82" fill="#64748B" font-family="Arial, sans-serif" font-size="12" font-weight="700">TOTAL</text>
+  <text x="1218" y="103" fill="#0F172A" font-family="Arial, sans-serif" font-size="20" font-weight="700">$118</text>
+  <rect x="64" y="156" width="1272" height="210" rx="36" fill="#0F172A"/>
+  <text x="104" y="230" fill="white" font-family="Arial, sans-serif" font-size="46" font-weight="700">Checkpoint Debugging React</text>
+  <text x="104" y="274" fill="#CBD5E1" font-family="Arial, sans-serif" font-size="22">A redesigned React + Tailwind checkpoint app for inspecting props, state,</text>
+  <text x="104" y="306" fill="#CBD5E1" font-family="Arial, sans-serif" font-size="22">derived totals, filters, persistence, and component flow with DevTools.</text>
+  <rect x="104" y="334" width="222" height="84" rx="26" fill="white" fill-opacity="0.08"/>
+  <text x="128" y="364" fill="#CBD5E1" font-family="Arial, sans-serif" font-size="12" font-weight="700">COMPONENTS</text>
+  <text x="128" y="396" fill="#FBBF24" font-family="Arial, sans-serif" font-size="30" font-weight="700">7+</text>
+  <rect x="348" y="334" width="222" height="84" rx="26" fill="white" fill-opacity="0.08"/>
+  <text x="372" y="364" fill="#CBD5E1" font-family="Arial, sans-serif" font-size="12" font-weight="700">FIXES</text>
+  <text x="372" y="396" fill="#FBBF24" font-family="Arial, sans-serif" font-size="30" font-weight="700">3</text>
+  <rect x="592" y="334" width="260" height="84" rx="26" fill="white" fill-opacity="0.08"/>
+  <text x="616" y="364" fill="#CBD5E1" font-family="Arial, sans-serif" font-size="12" font-weight="700">DEBUG TARGETS</text>
+  <text x="616" y="396" fill="#FBBF24" font-family="Arial, sans-serif" font-size="30" font-weight="700">App to CartItem</text>
+  <rect x="64" y="396" width="760" height="438" rx="34" fill="white"/>
+  <text x="104" y="456" fill="#0F172A" font-family="Arial, sans-serif" font-size="34" font-weight="700">Interactive debugging catalogue</text>
+  <text x="104" y="492" fill="#64748B" font-family="Arial, sans-serif" font-size="18">Search, filter, and add exercises while watching props and state update.</text>
+  <rect x="104" y="528" width="260" height="56" rx="20" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="128" y="562" fill="#94A3B8" font-family="Arial, sans-serif" font-size="16">Search state, props, effects...</text>
+  <rect x="384" y="528" width="160" height="56" rx="20" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="422" y="562" fill="#0F172A" font-family="Arial, sans-serif" font-size="16">All</text>
+  <rect x="564" y="528" width="220" height="56" rx="20" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="600" y="562" fill="#0F172A" font-family="Arial, sans-serif" font-size="16">Featured first</text>
+  <rect x="104" y="618" width="324" height="172" rx="28" fill="#F8FAFC" stroke="#E2E8F0"/>
+  <rect x="126" y="638" width="88" height="28" rx="14" fill="#FEF3C7"/>
+  <text x="149" y="657" fill="#92400E" font-family="Arial, sans-serif" font-size="12" font-weight="700">STATE</text>
+  <rect x="126" y="686" width="280" height="20" rx="10" fill="#CBD5E1"/>
+  <rect x="126" y="718" width="232" height="14" rx="7" fill="#E2E8F0"/>
+  <rect x="126" y="744" width="280" height="14" rx="7" fill="#E2E8F0"/>
+  <rect x="126" y="760" width="140" height="14" rx="7" fill="#E2E8F0"/>
+  <rect x="460" y="618" width="324" height="172" rx="28" fill="#F8FAFC" stroke="#E2E8F0"/>
+  <rect x="482" y="638" width="94" height="28" rx="14" fill="#E0F2FE"/>
+  <text x="509" y="657" fill="#075985" font-family="Arial, sans-serif" font-size="12" font-weight="700">PROPS</text>
+  <rect x="482" y="686" width="280" height="20" rx="10" fill="#CBD5E1"/>
+  <rect x="482" y="718" width="242" height="14" rx="7" fill="#E2E8F0"/>
+  <rect x="482" y="744" width="280" height="14" rx="7" fill="#E2E8F0"/>
+  <rect x="482" y="760" width="156" height="14" rx="7" fill="#E2E8F0"/>
+  <rect x="852" y="396" width="484" height="210" rx="34" fill="#0F172A"/>
+  <text x="892" y="454" fill="white" font-family="Arial, sans-serif" font-size="34" font-weight="700">Debugging walkthrough</text>
+  <text x="892" y="494" fill="#CBD5E1" font-family="Arial, sans-serif" font-size="18">Built to be inspected, not just used.</text>
+  <rect x="892" y="526" width="180" height="58" rx="22" fill="white" fill-opacity="0.1"/>
+  <text x="920" y="548" fill="#CBD5E1" font-family="Arial, sans-serif" font-size="12" font-weight="700">VISIBLE CARDS</text>
+  <text x="920" y="573" fill="#FBBF24" font-family="Arial, sans-serif" font-size="28" font-weight="700">6</text>
+  <rect x="1092" y="526" width="180" height="58" rx="22" fill="white" fill-opacity="0.1"/>
+  <text x="1120" y="548" fill="#CBD5E1" font-family="Arial, sans-serif" font-size="12" font-weight="700">CART ITEMS</text>
+  <text x="1120" y="573" fill="#FBBF24" font-family="Arial, sans-serif" font-size="28" font-weight="700">4</text>
+  <rect x="852" y="628" width="484" height="206" rx="34" fill="white"/>
+  <text x="892" y="684" fill="#0F172A" font-family="Arial, sans-serif" font-size="34" font-weight="700">Inspection cart</text>
+  <rect x="892" y="716" width="404" height="44" rx="18" fill="#F8FAFC" stroke="#E2E8F0"/>
+  <text x="918" y="744" fill="#0F172A" font-family="Arial, sans-serif" font-size="16">Quantity Guard Exercise</text>
+  <rect x="892" y="774" width="404" height="18" rx="9" fill="#E2E8F0"/>
+  <text x="892" y="818" fill="#64748B" font-family="Arial, sans-serif" font-size="15">Use React DevTools to inspect live totals and quantity updates.</text>
+</svg>

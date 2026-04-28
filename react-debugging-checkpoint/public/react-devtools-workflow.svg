@@ -1,0 +1,37 @@
+<svg width="1400" height="760" viewBox="0 0 1400 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="760" rx="40" fill="#0F172A"/>
+  <text x="72" y="104" fill="white" font-family="Arial, sans-serif" font-size="46" font-weight="700">React DevTools debugging flow</text>
+  <text x="72" y="146" fill="#CBD5E1" font-family="Arial, sans-serif" font-size="22">A simple evaluator guide for reproducing the debugging process inside the app.</text>
+  <rect x="72" y="210" width="280" height="210" rx="28" fill="white" fill-opacity="0.08" stroke="white" stroke-opacity="0.08"/>
+  <text x="104" y="256" fill="#FBBF24" font-family="Arial, sans-serif" font-size="14" font-weight="700">STEP 1</text>
+  <text x="104" y="300" fill="white" font-family="Arial, sans-serif" font-size="30" font-weight="700">Inspect App</text>
+  <text x="104" y="344" fill="#CBD5E1" font-family="Arial, sans-serif" font-size="18">Check search, category,</text>
+  <text x="104" y="372" fill="#CBD5E1" font-family="Arial, sans-serif" font-size="18">sort state, and derived</text>
+  <text x="104" y="400" fill="#CBD5E1" font-family="Arial, sans-serif" font-size="18">item counters.</text>
+  <rect x="394" y="210" width="280" height="210" rx="28" fill="white" fill-opacity="0.08" stroke="white" stroke-opacity="0.08"/>
+  <text x="426" y="256" fill="#FBBF24" font-family="Arial, sans-serif" font-size="14" font-weight="700">STEP 2</text>
+  <text x="426" y="300" fill="white" font-family="Arial, sans-serif" font-size="30" font-weight="700">Trace Props</text>
+  <text x="426" y="344" fill="#CBD5E1" font-family="Arial, sans-serif" font-size="18">Follow values from</text>
+  <text x="426" y="372" fill="#CBD5E1" font-family="Arial, sans-serif" font-size="18">ProductList into each</text>
+  <text x="426" y="400" fill="#CBD5E1" font-family="Arial, sans-serif" font-size="18">ProductCard.</text>
+  <rect x="716" y="210" width="280" height="210" rx="28" fill="white" fill-opacity="0.08" stroke="white" stroke-opacity="0.08"/>
+  <text x="748" y="256" fill="#FBBF24" font-family="Arial, sans-serif" font-size="14" font-weight="700">STEP 3</text>
+  <text x="748" y="300" fill="white" font-family="Arial, sans-serif" font-size="30" font-weight="700">Update State</text>
+  <text x="748" y="344" fill="#CBD5E1" font-family="Arial, sans-serif" font-size="18">Add items, adjust</text>
+  <text x="748" y="372" fill="#CBD5E1" font-family="Arial, sans-serif" font-size="18">quantity, and confirm</text>
+  <text x="748" y="400" fill="#CBD5E1" font-family="Arial, sans-serif" font-size="18">the totals recalculate.</text>
+  <rect x="1038" y="210" width="290" height="210" rx="28" fill="white" fill-opacity="0.08" stroke="white" stroke-opacity="0.08"/>
+  <text x="1070" y="256" fill="#FBBF24" font-family="Arial, sans-serif" font-size="14" font-weight="700">STEP 4</text>
+  <text x="1070" y="300" fill="white" font-family="Arial, sans-serif" font-size="30" font-weight="700">Refresh</text>
+  <text x="1070" y="344" fill="#CBD5E1" font-family="Arial, sans-serif" font-size="18">Reload the page and</text>
+  <text x="1070" y="372" fill="#CBD5E1" font-family="Arial, sans-serif" font-size="18">verify localStorage keeps</text>
+  <text x="1070" y="400" fill="#CBD5E1" font-family="Arial, sans-serif" font-size="18">the cart session intact.</text>
+  <path d="M352 316H394" stroke="#FBBF24" stroke-width="6" stroke-linecap="round"/>
+  <path d="M674 316H716" stroke="#FBBF24" stroke-width="6" stroke-linecap="round"/>
+  <path d="M996 316H1038" stroke="#FBBF24" stroke-width="6" stroke-linecap="round"/>
+  <rect x="72" y="492" width="1256" height="180" rx="32" fill="#F8FAFC"/>
+  <text x="110" y="550" fill="#0F172A" font-family="Arial, sans-serif" font-size="34" font-weight="700">Resolved issues</text>
+  <text x="110" y="592" fill="#475569" font-family="Arial, sans-serif" font-size="20">1. Invalid quantity values were guarded and now remove items cleanly.</text>
+  <text x="110" y="626" fill="#475569" font-family="Arial, sans-serif" font-size="20">2. Cart totals are derived from live state and stay in sync with visible rows.</text>
+  <text x="110" y="660" fill="#475569" font-family="Arial, sans-serif" font-size="20">3. Cart state persists after refresh through the custom hook and localStorage.</text>
+</svg>

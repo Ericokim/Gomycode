@@ -1,42 +1,83 @@
-import { CartItem as CartItemType } from '../../types';
+import type { CartItem as CartItemType } from '../../types';
 import { CartItem } from '../CartItem/CartItem';
 
 interface CartProps {
   cartItems: CartItemType[];
   onRemove: (productId: number) => void;
   onUpdateQuantity: (productId: number, quantity: number) => void;
+  subtotal: number;
   total: number;
 }
 
-export function Cart({ cartItems, onRemove, onUpdateQuantity, total }: CartProps) {
+export function Cart({ cartItems, onRemove, onUpdateQuantity, subtotal, total }: CartProps) {
+  const shipping = total - subtotal;
+
   return (
-    <aside className="flex w-80 shrink-0 flex-col border-l border-slate-200 bg-white p-5 min-h-[calc(100vh-56px)]">
-      <h2 className="mb-4 text-lg font-semibold text-slate-900">Your Cart</h2>
+    <aside className={styles.panel}>
+      <div className={styles.header}>
+        <div>
+          <h2 className={styles.title}>Your cart</h2>
+          <p className={styles.subtitle}>Review your selected items before checkout.</p>
+        </div>
+        <span className={styles.count}>{cartItems.length} {cartItems.length === 1 ? 'item' : 'items'}</span>
+      </div>
+
       {cartItems.length === 0 ? (
-        <p className="text-sm italic text-slate-400">Your cart is empty.</p>
+        <div className={styles.emptyState}>
+          <p className={styles.emptyTitle}>Your cart is empty.</p>
+          <p className={styles.emptyText}>
+            Add items from the catalogue to get started.
+          </p>
+        </div>
       ) : (
         <>
-          <div className="flex-1 overflow-y-auto">
-            {cartItems.map(item => (
+          <div className={styles.itemsWrap}>
+            {cartItems.map((item) => (
               <CartItem
                 key={item.product.id}
                 cartItem={item}
                 onRemove={() => onRemove(item.product.id)}
-                onUpdateQuantity={(qty) => onUpdateQuantity(item.product.id, qty)}
+                onUpdateQuantity={(quantity) => onUpdateQuantity(item.product.id, quantity)}
               />
             ))}
           </div>
-          <div className="mt-4 border-t-2 border-slate-900 pt-4">
-            <div className="flex items-center justify-between text-base font-bold text-slate-900">
+
+          <div className={styles.summary}>
+            <div className={styles.summaryRow}>
+              <span>Subtotal</span>
+              <span>${subtotal.toFixed(2)}</span>
+            </div>
+            <div className={styles.summaryRow}>
+              <span>Shipping</span>
+              <span>{shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`}</span>
+            </div>
+            <div className={styles.summaryTotal}>
               <span>Total</span>
               <span>${total.toFixed(2)}</span>
             </div>
-            <button className="mt-3 w-full rounded-full bg-amber-400 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-amber-300 active:scale-95">
-              Checkout
-            </button>
+            <button className={styles.button}>Checkout</button>
           </div>
         </>
       )}
     </aside>
   );
 }
+
+const styles = {
+  panel: 'rounded-[32px] bg-white p-6 shadow-xl shadow-slate-200/60 sm:p-8',
+  header: 'flex items-start justify-between gap-4 border-b border-slate-200 pb-5',
+  title: 'text-2xl font-bold text-slate-900',
+  subtitle: 'mt-2 text-sm leading-6 text-slate-600',
+  count:
+    'rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500',
+  emptyState: 'rounded-[28px] bg-slate-50 px-5 py-8 text-center',
+  emptyTitle: 'text-lg font-semibold text-slate-900',
+  emptyText: 'mt-3 text-sm leading-6 text-slate-600',
+  itemsWrap: 'mt-6 flex flex-col gap-4',
+  summary: 'mt-6 rounded-[28px] bg-slate-900 p-5 text-white',
+  summaryRow:
+    'flex items-center justify-between border-b border-white/10 py-3 text-sm text-slate-200',
+  summaryTotal: 'flex items-center justify-between pt-4 text-base font-bold text-white',
+  button:
+    'mt-5 w-full rounded-full bg-amber-300 px-4 py-3 text-sm font-semibold text-slate-900 transition hover:bg-amber-200 active:scale-[0.98]',
+};

@@ -4,6 +4,10 @@ export interface Product {
   price: number;
   image: string;
   category: string;
+  description: string;
+  badge: string;
+  stock: number;
+  featured: boolean;
 }
 
 export interface CartItem {
