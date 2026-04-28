@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Library Management System</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Smart Library Management System</h1>
+      <p class="subtitle">OOD Demo — Factory · Singleton · Observer</p>
+    </header>
+
+    <main>
+      <!-- Add User -->
+      <section class="card">
+        <h2>Add User</h2>
+        <form id="add-user-form">
+          <input id="user-name" type="text" placeholder="Full name" required />
+          <input id="user-email" type="email" placeholder="Email" required />
+          <select id="user-type">
+            <option value="student">Student</option>
+            <option value="teacher">Teacher</option>
+          </select>
+          <button type="submit">Add User</button>
+        </form>
+        <p id="user-msg" class="msg"></p>
+      </section>
+
+      <!-- Add Book -->
+      <section class="card">
+        <h2>Add Book</h2>
+        <form id="add-book-form">
+          <input id="book-title" type="text" placeholder="Title" required />
+          <input id="book-author" type="text" placeholder="Author" required />
+          <button type="submit">Add Book</button>
+        </form>
+        <p id="book-msg" class="msg"></p>
+      </section>
+
+      <!-- Borrow Book -->
+      <section class="card">
+        <h2>Borrow Book</h2>
+        <form id="borrow-form">
+          <select id="borrow-user"></select>
+          <select id="borrow-book"></select>
+          <button type="submit">Borrow</button>
+        </form>
+        <p id="borrow-msg" class="msg"></p>
+      </section>
+
+      <!-- Return Book -->
+      <section class="card">
+        <h2>Return Book</h2>
+        <form id="return-form">
+          <select id="return-transaction"></select>
+          <button type="submit">Return</button>
+        </form>
+        <p id="return-msg" class="msg"></p>
+      </section>
+
+      <!-- Active Loans -->
+      <section class="card wide">
+        <h2>Active Loans</h2>
+        <button id="refresh-loans">Refresh</button>
+        <table id="loans-table">
+          <thead>
+            <tr>
+              <th>Tx #</th>
+              <th>User</th>
+              <th>Book</th>
+              <th>Borrowed</th>
+              <th>Due</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="loans-body"></tbody>
+        </table>
+      </section>
+
+      <!-- Overdue Notifications -->
+      <section class="card wide">
+        <h2>Overdue Check</h2>
+        <button id="check-overdue">Check Overdue</button>
+        <ul id="notification-log"></ul>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

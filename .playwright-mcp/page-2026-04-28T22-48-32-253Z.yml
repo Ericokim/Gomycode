@@ -1,0 +1,60 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - heading "Smart Library Management System" [level=1] [ref=e3]
+    - paragraph [ref=e4]: OOD Demo — Factory · Singleton · Observer
+  - main [ref=e5]:
+    - generic [ref=e6]:
+      - heading "Add User" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - textbox "Full name" [ref=e9]
+        - textbox "Email" [ref=e10]
+        - combobox [ref=e11]:
+          - option "Student" [selected]
+          - option "Teacher"
+        - button "Add User" [ref=e12] [cursor=pointer]
+      - paragraph [ref=e13]
+    - generic [ref=e14]:
+      - heading "Add Book" [level=2] [ref=e15]
+      - generic [ref=e16]:
+        - textbox "Title" [ref=e17]
+        - textbox "Author" [ref=e18]
+        - button "Add Book" [ref=e19] [cursor=pointer]
+      - paragraph [ref=e20]
+    - generic [ref=e21]:
+      - heading "Borrow Book" [level=2] [ref=e22]
+      - generic [ref=e23]:
+        - combobox [ref=e24]:
+          - option "Alice Kamau (Student)" [selected]
+          - option "Dr. Bob Otieno (Teacher)"
+        - combobox [ref=e25]:
+          - option "Clean Code" [selected]
+          - option "The Pragmatic Programmer"
+          - option "Design Patterns"
+        - button "Borrow" [ref=e26] [cursor=pointer]
+      - paragraph [ref=e27]
+    - generic [ref=e28]:
+      - heading "Return Book" [level=2] [ref=e29]
+      - generic [ref=e30]:
+        - combobox [ref=e31]:
+          - option "No active loans" [selected]
+        - button "Return" [ref=e32] [cursor=pointer]
+      - paragraph [ref=e33]
+    - generic [ref=e34]:
+      - heading "Active Loans" [level=2] [ref=e35]
+      - button "Refresh" [ref=e36] [cursor=pointer]
+      - table [ref=e37]:
+        - rowgroup [ref=e38]:
+          - 'row "Tx # User Book Borrowed Due Status" [ref=e39]':
+            - 'columnheader "Tx #" [ref=e40]'
+            - columnheader "User" [ref=e41]
+            - columnheader "Book" [ref=e42]
+            - columnheader "Borrowed" [ref=e43]
+            - columnheader "Due" [ref=e44]
+            - columnheader "Status" [ref=e45]
+        - rowgroup [ref=e46]:
+          - row "No active loans" [ref=e47]:
+            - cell "No active loans" [ref=e48]
+    - generic [ref=e49]:
+      - heading "Overdue Check" [level=2] [ref=e50]
+      - button "Check Overdue" [ref=e51] [cursor=pointer]
+      - list
