@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm src/App.test.tsx src/logo.svg src/reportWebVitals.ts src/setupTests.ts)",
+      "Bash(mkdir -p src/types src/data src/hooks src/components/Header src/components/ProductList src/components/ProductCard src/components/Cart src/components/CartItem)",
+      "Bash(npx tsc *)"
+    ]
+  }
+}
