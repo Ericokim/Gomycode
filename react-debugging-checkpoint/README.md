@@ -106,6 +106,8 @@ The `useCart` hook now syncs cart updates to `localStorage` via a `useEffect` th
 
 ### 4. React DevTools inspection steps
 
+![React DevTools inspection](./src/assets/react-devtools-inspection.png)
+
 Open the **Components** panel and follow these steps:
 
 1. **Select `App`** — confirm `searchTerm`, `selectedCategory`, `sortBy` are all visible in state, and `cartItems` is visible via the `useCart` hook
