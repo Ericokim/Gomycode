@@ -36,19 +36,6 @@ smart-library/
 | Singleton | `singleton.ts`     | Ensures one central LibrarySystem instance            |
 | Observer  | `observer.ts`      | Notifies registered users when books are overdue      |
 
-## Todo Items
-
-- [x] Scaffold Vite + TypeScript project
-- [x] Implement `models/user.ts` — abstract User, Student, Teacher
-- [x] Implement `models/book.ts` — Book class
-- [x] Implement `models/transaction.ts` — BorrowTransaction class
-- [x] Implement `patterns/factory.ts` — UserFactory (Factory Pattern)
-- [x] Implement `patterns/singleton.ts` — LibrarySystem Singleton
-- [x] Implement `patterns/observer.ts` — Observer interface + NotificationService
-- [x] Build `index.html` — UI structure (forms + tables)
-- [x] Implement `src/main.ts` — wire all UI interactions to the library system
-- [x] Style `src/style.css` — clean, readable UI
-- [x] Verify all features work in browser
 
 ## Features
 
@@ -60,12 +47,6 @@ smart-library/
 6. Check overdue books — triggers Observer notifications
 
 ---
-
-## Review
-
-### What Was Built
-
-A fully functional Smart Library Management System running in the browser, built with Vite and TypeScript. The project is organized into two subsystems: `models/` for the core domain classes and `patterns/` for the three design pattern implementations.
 
 ### Design Patterns Implemented
 
