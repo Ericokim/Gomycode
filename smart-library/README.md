@@ -1,9 +1,30 @@
-# Smart Library Management System — Project Plan
+# Smart Library Management System
 
 ## Overview
 
 A browser-based Library Management System built with Vite + TypeScript.
 Demonstrates OOD principles: modular design, inheritance, encapsulation, and three design patterns.
+
+**Checkpoint status:** Submitted
+
+## Checkpoint Goal
+
+Design and implement a simplified Library Management System using Object-Oriented Design principles. The system manages users, books, and borrowing transactions while applying modular design, inheritance, encapsulation, and design patterns.
+
+## System Design Diagram
+
+The diagram below shows the main classes and relationships used in the Smart Library Management System.
+
+![Smart Library Management System class diagram](docs/smart-library-class-diagram.png)
+
+The design matches the checkpoint requirements:
+
+- `User` is an abstract base class.
+- `Student` and `Teacher` inherit from `User`.
+- `UserFactory` applies the Factory Pattern to create user objects.
+- `LibrarySystem` applies the Singleton Pattern as the central manager.
+- `NotificationService` supports the Observer Pattern for overdue notifications.
+- `Book` and `BorrowTransaction` model the borrowing process.
 
 ## Tech Stack
 
