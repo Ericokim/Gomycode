@@ -1,0 +1,12 @@
+{
+  "name": "cleankart-refactor-checkpoint",
+  "version": "1.0.0",
+  "description": "CleanKart shopping cart refactoring checkpoint.",
+  "type": "module",
+  "scripts": {
+    "messy": "node src/messy-cart.js",
+    "refactored": "node src/refactored-cart.js",
+    "patterns": "node src/patterns-cart.js"
+  },
+  "license": "MIT"
+}
