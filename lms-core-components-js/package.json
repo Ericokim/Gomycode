@@ -1,0 +1,11 @@
+{
+  "name": "lms-core-components-js",
+  "version": "1.0.0",
+  "description": "Core Library Management System components using ES modules and design patterns.",
+  "type": "module",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "license": "MIT"
+}
