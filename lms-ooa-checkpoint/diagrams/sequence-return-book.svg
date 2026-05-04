@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#0f2f6f"/></marker></defs>
+  <style>text{font-family:Arial,Helvetica,sans-serif;fill:#111827}.title{font-size:34px;font-weight:700}.head{fill:#eff6ff;stroke:#2563eb;stroke-width:2}.line{stroke:#94a3b8;stroke-width:2;stroke-dasharray:6 6}.msg{stroke:#0f2f6f;stroke-width:2;marker-end:url(#arrow)}.label{font-size:16px}.hlabel{font-size:18px;font-weight:700}</style>
+  <text x="600" y="45" text-anchor="middle" class="title">Sequence Diagram: Return Book</text>
+  <rect x="45" y="80" width="130" height="45" rx="8" class="head"/><text x="110" y="108" text-anchor="middle" class="hlabel">Librarian</text>
+  <rect x="210" y="80" width="150" height="45" rx="8" class="head"/><text x="285" y="108" text-anchor="middle" class="hlabel">UI</text>
+  <rect x="405" y="80" width="150" height="45" rx="8" class="head"/><text x="480" y="108" text-anchor="middle" class="hlabel">Library</text>
+  <rect x="600" y="80" width="150" height="45" rx="8" class="head"/><text x="675" y="108" text-anchor="middle" class="hlabel">Catalog</text>
+  <rect x="795" y="80" width="130" height="45" rx="8" class="head"/><text x="860" y="108" text-anchor="middle" class="hlabel">Book</text>
+  <rect x="970" y="80" width="150" height="45" rx="8" class="head"/><text x="1045" y="108" text-anchor="middle" class="hlabel">Loan/Member</text>
+  <line x1="110" y1="125" x2="110" y2="680" class="line"/><line x1="285" y1="125" x2="285" y2="680" class="line"/><line x1="480" y1="125" x2="480" y2="680" class="line"/><line x1="675" y1="125" x2="675" y2="680" class="line"/><line x1="860" y1="125" x2="860" y2="680" class="line"/><line x1="1045" y1="125" x2="1045" y2="680" class="line"/>
+  <line x1="110" y1="175" x2="285" y2="175" class="msg"/><text x="125" y="165" class="label">Select active loan</text>
+  <line x1="285" y1="240" x2="480" y2="240" class="msg"/><text x="305" y="230" class="label">processReturn(transactionId)</text>
+  <line x1="480" y1="305" x2="1045" y2="305" class="msg"/><text x="610" y="295" class="label">find active transaction</text>
+  <line x1="480" y1="370" x2="675" y2="370" class="msg"/><text x="505" y="360" class="label">findById(bookId)</text>
+  <line x1="675" y1="435" x2="480" y2="435" class="msg"/><text x="540" y="425" class="label">Book found</text>
+  <line x1="480" y1="500" x2="860" y2="500" class="msg"/><text x="570" y="490" class="label">markReturned()</text>
+  <line x1="480" y1="565" x2="1045" y2="565" class="msg"/><text x="610" y="555" class="label">remove borrowed book + complete loan</text>
+  <line x1="480" y1="630" x2="285" y2="630" class="msg"/><text x="335" y="620" class="label">Return completed</text>
+  <line x1="285" y1="670" x2="110" y2="670" class="msg"/><text x="130" y="660" class="label">Show available status</text>
+</svg>

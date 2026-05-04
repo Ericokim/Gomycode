@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820">
+  <style>
+    text{font-family:Arial,Helvetica,sans-serif;fill:#111827}.title{font-size:36px;font-weight:700}.label{font-size:20px}.uc{fill:#fff;stroke:#0f2f6f;stroke-width:3}.actor{stroke:#0f2f6f;stroke-width:4;fill:none}.line{stroke:#0f2f6f;stroke-width:3}
+  </style>
+  <text x="600" y="55" text-anchor="middle" class="title">Use Case Diagram</text>
+  <rect x="330" y="85" width="560" height="680" rx="8" fill="#fff" stroke="#0f2f6f" stroke-width="4"/>
+  <text x="610" y="125" text-anchor="middle" font-size="28" font-weight="700">Library Management System</text>
+
+  <circle cx="130" cy="210" r="20" class="actor"/><line x1="130" y1="230" x2="130" y2="300" class="actor"/><line x1="85" y1="260" x2="175" y2="260" class="actor"/><line x1="130" y1="300" x2="95" y2="360" class="actor"/><line x1="130" y1="300" x2="165" y2="360" class="actor"/><text x="130" y="395" text-anchor="middle" class="label">Member</text>
+  <circle cx="130" cy="545" r="20" class="actor"/><line x1="130" y1="565" x2="130" y2="635" class="actor"/><line x1="85" y1="595" x2="175" y2="595" class="actor"/><line x1="130" y1="635" x2="95" y2="695" class="actor"/><line x1="130" y1="635" x2="165" y2="695" class="actor"/><text x="130" y="735" text-anchor="middle" class="label">Librarian</text>
+  <circle cx="1050" cy="480" r="20" class="actor"/><line x1="1050" y1="500" x2="1050" y2="570" class="actor"/><line x1="1005" y1="530" x2="1095" y2="530" class="actor"/><line x1="1050" y1="570" x2="1015" y2="630" class="actor"/><line x1="1050" y1="570" x2="1085" y2="630" class="actor"/><text x="1050" y="670" text-anchor="middle" class="label">System Administrator</text>
+
+  <ellipse cx="610" cy="185" rx="150" ry="38" class="uc"/><text x="610" y="193" text-anchor="middle" class="label">Search Book</text>
+  <ellipse cx="610" cy="265" rx="150" ry="38" class="uc"/><text x="610" y="273" text-anchor="middle" class="label">View Book Details</text>
+  <ellipse cx="610" cy="345" rx="150" ry="38" class="uc"/><text x="610" y="353" text-anchor="middle" class="label">Reserve Book</text>
+  <ellipse cx="610" cy="425" rx="150" ry="38" class="uc"/><text x="610" y="433" text-anchor="middle" class="label">Issue / Borrow Book</text>
+  <ellipse cx="610" cy="505" rx="150" ry="38" class="uc"/><text x="610" y="513" text-anchor="middle" class="label">Return Book</text>
+  <ellipse cx="610" cy="585" rx="150" ry="38" class="uc"/><text x="610" y="593" text-anchor="middle" class="label">Manage Inventory</text>
+  <ellipse cx="610" cy="665" rx="150" ry="38" class="uc"/><text x="610" y="673" text-anchor="middle" class="label">Generate Reports</text>
+  <ellipse cx="610" cy="735" rx="165" ry="32" class="uc"/><text x="610" y="743" text-anchor="middle" class="label">Manage Users / Permissions</text>
+
+  <line x1="175" y1="260" x2="465" y2="185" class="line"/><line x1="175" y1="260" x2="465" y2="265" class="line"/><line x1="175" y1="260" x2="465" y2="345" class="line"/>
+  <line x1="175" y1="595" x2="465" y2="425" class="line"/><line x1="175" y1="595" x2="465" y2="505" class="line"/><line x1="175" y1="595" x2="465" y2="585" class="line"/><line x1="175" y1="595" x2="465" y2="665" class="line"/>
+  <line x1="1005" y1="530" x2="760" y2="665" class="line"/><line x1="1005" y1="530" x2="775" y2="735" class="line"/>
+</svg>

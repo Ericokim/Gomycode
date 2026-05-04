@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560">
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#0f2f6f"/></marker></defs>
+  <style>text{font-family:Arial,Helvetica,sans-serif;fill:#111827}.title{font-size:34px;font-weight:700}.state{fill:#eff6ff;stroke:#2563eb;stroke-width:3}.label{font-size:20px}.event{font-size:16px;fill:#374151}.line{stroke:#0f2f6f;stroke-width:3;fill:none;marker-end:url(#arrow)}</style>
+  <text x="500" y="50" text-anchor="middle" class="title">Book State Diagram</text>
+  <circle cx="95" cy="275" r="12" fill="#111827"/>
+  <rect x="160" y="240" width="130" height="70" rx="12" class="state"/><text x="225" y="282" text-anchor="middle" class="label">New</text>
+  <rect x="370" y="240" width="150" height="70" rx="12" class="state"/><text x="445" y="282" text-anchor="middle" class="label">Available</text>
+  <rect x="610" y="125" width="150" height="70" rx="12" class="state"/><text x="685" y="167" text-anchor="middle" class="label">Reserved</text>
+  <rect x="610" y="360" width="150" height="70" rx="12" class="state"/><text x="685" y="402" text-anchor="middle" class="label">Issued</text>
+  <rect x="830" y="360" width="120" height="70" rx="12" class="state"/><text x="890" y="402" text-anchor="middle" class="label">Lost</text>
+  <rect x="830" y="125" width="120" height="70" rx="12" class="state"/><text x="890" y="167" text-anchor="middle" class="label">Removed</text>
+  <path d="M108 275 L155 275" class="line"/><text x="115" y="255" class="event">start</text>
+  <path d="M290 275 L365 275" class="line"/><text x="305" y="255" class="event">register()</text>
+  <path d="M520 250 C560 205 575 170 605 160" class="line"/><text x="535" y="205" class="event">reserveBook()</text>
+  <path d="M610 180 C560 215 540 240 522 255" class="line"/><text x="525" y="172" class="event">cancelReservation()</text>
+  <path d="M685 195 L685 355" class="line"/><text x="705" y="280" class="event">issueBook()</text>
+  <path d="M520 300 C560 345 585 380 605 390" class="line"/><text x="535" y="358" class="event">issueBook()</text>
+  <path d="M610 415 C540 460 480 365 455 315" class="line"/><text x="455" y="455" class="event">processReturn()</text>
+  <path d="M760 395 L825 395" class="line"/><text x="772" y="375" class="event">markLost()</text>
+  <path d="M520 260 C645 80 735 90 825 145" class="line"/><text x="620" y="95" class="event">removeBook()</text>
+  <path d="M890 360 L890 200" class="line"/><text x="905" y="285" class="event">removeBook()</text>
+</svg>

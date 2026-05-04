@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="980" viewBox="0 0 1400 980">
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#111827"/></marker><marker id="diamond" markerWidth="14" markerHeight="14" refX="2" refY="7" orient="auto"><path d="M0,7 L7,0 L14,7 L7,14 z" fill="#111827"/></marker></defs>
+  <style>
+    text{font-family:Arial,Helvetica,sans-serif;fill:#111827}.title{font-size:36px;font-weight:700}.class-title{font-size:22px;font-weight:700}.body{font-size:16px}.box{fill:#f8fbff;stroke:#2563eb;stroke-width:3}.green{fill:#f2fbf4;stroke:#24713a}.teal{fill:#ecfeff;stroke:#0891b2}.gold{fill:#fffaf0;stroke:#b7791f}.purple{fill:#faf5ff;stroke:#7e22ce}.line{stroke:#111827;stroke-width:2;fill:none}.dash{stroke-dasharray:8 6}
+  </style>
+  <text x="700" y="50" text-anchor="middle" class="title">Class Diagram</text>
+
+  <g transform="translate(45,90)">
+    <rect width="285" height="260" rx="8" class="box"/><line x1="0" y1="45" x2="285" y2="45" class="line"/><line x1="0" y1="158" x2="285" y2="158" class="line"/>
+    <text x="142" y="30" text-anchor="middle" class="class-title" fill="#174a9c">Book</text>
+    <text x="16" y="75" class="body">- id: string</text><text x="16" y="100" class="body">- title: string</text><text x="16" y="125" class="body">- author: string</text><text x="16" y="150" class="body">- status: BookStatus</text>
+    <text x="16" y="190" class="body">+ isAvailable(): boolean</text><text x="16" y="215" class="body">+ markIssued(): void</text><text x="16" y="240" class="body">+ markReturned(): void</text>
+  </g>
+
+  <g transform="translate(520,90)">
+    <rect width="330" height="180" rx="8" class="box green"/><line x1="0" y1="45" x2="330" y2="45" class="line"/><line x1="0" y1="85" x2="330" y2="85" class="line"/>
+    <text x="165" y="30" text-anchor="middle" class="class-title" fill="#17612d">Catalog</text>
+    <text x="16" y="70" class="body">- books: List&lt;Book&gt;</text>
+    <text x="16" y="115" class="body">+ addBook(book): void</text><text x="16" y="140" class="body">+ search(query): List&lt;Book&gt;</text><text x="16" y="165" class="body">+ findById(bookId): Book</text>
+  </g>
+
+  <g transform="translate(1010,90)">
+    <rect width="330" height="180" rx="8" class="box purple"/><line x1="0" y1="45" x2="330" y2="45" class="line"/><line x1="0" y1="85" x2="330" y2="85" class="line"/>
+    <text x="165" y="30" text-anchor="middle" class="class-title" fill="#6b21a8">ReportService</text>
+    <text x="16" y="70" class="body">- reportType: string</text>
+    <text x="16" y="115" class="body">+ generateInventoryReport(): Report</text><text x="16" y="140" class="body">+ generateLoanReport(): Report</text><text x="16" y="165" class="body">+ generateOverdueReport(): Report</text>
+  </g>
+
+  <g transform="translate(45,450)">
+    <rect width="300" height="245" rx="8" class="box"/><line x1="0" y1="45" x2="300" y2="45" class="line"/><line x1="0" y1="155" x2="300" y2="155" class="line"/>
+    <text x="150" y="30" text-anchor="middle" class="class-title" fill="#174a9c">Member</text>
+    <text x="16" y="75" class="body">- memberId: string</text><text x="16" y="100" class="body">- name: string</text><text x="16" y="125" class="body">- email: string</text><text x="16" y="150" class="body">- borrowLimit: number</text>
+    <text x="16" y="190" class="body">+ canBorrow(): boolean</text><text x="16" y="215" class="body">+ getActiveLoans(): string[]</text>
+  </g>
+
+  <g transform="translate(530,390)">
+    <rect width="330" height="270" rx="8" class="box teal"/><line x1="0" y1="45" x2="330" y2="45" class="line"/><line x1="0" y1="165" x2="330" y2="165" class="line"/>
+    <text x="165" y="30" text-anchor="middle" class="class-title" fill="#0e7490">BorrowTransaction</text>
+    <text x="16" y="75" class="body">- loanId: string</text><text x="16" y="100" class="body">- bookId: string</text><text x="16" y="125" class="body">- memberId: string</text><text x="16" y="150" class="body">- dueDate: Date</text>
+    <text x="16" y="200" class="body">+ isOverdue(): boolean</text><text x="16" y="225" class="body">+ complete(returnDate): void</text><text x="16" y="250" class="body">+ calculateFine(): number</text>
+  </g>
+
+  <g transform="translate(515,745)">
+    <rect width="360" height="165" rx="8" class="box gold"/><line x1="0" y1="45" x2="360" y2="45" class="line"/><line x1="0" y1="105" x2="360" y2="105" class="line"/>
+    <text x="180" y="30" text-anchor="middle" class="class-title" fill="#8a5a00">Reservation</text>
+    <text x="16" y="75" class="body">- reservationId: string</text><text x="16" y="100" class="body">- status: ReservationStatus</text>
+    <text x="16" y="135" class="body">+ fulfill(): void</text><text x="16" y="158" class="body">+ cancel(): void</text>
+  </g>
+
+  <g transform="translate(1035,450)">
+    <rect width="300" height="220" rx="8" class="box"/><line x1="0" y1="45" x2="300" y2="45" class="line"/><line x1="0" y1="100" x2="300" y2="100" class="line"/>
+    <text x="150" y="30" text-anchor="middle" class="class-title" fill="#174a9c">Librarian</text>
+    <text x="16" y="75" class="body">- staffId: string</text><text x="16" y="95" class="body">- role: string</text>
+    <text x="16" y="130" class="body">+ issueBook(): Loan</text><text x="16" y="155" class="body">+ acceptReturn(): void</text><text x="16" y="180" class="body">+ registerMember(): Member</text><text x="16" y="205" class="body">+ generateReports(): Report</text>
+  </g>
+
+  <text x="420" y="185" class="body">1</text><text x="350" y="185" class="body">0..*</text>
+  <line x1="330" y1="190" x2="520" y2="190" class="line" marker-end="url(#diamond)"/><text x="390" y="225" class="body">contains</text>
+  <line x1="345" y1="565" x2="530" y2="530" class="line" marker-end="url(#arrow)"/><text x="385" y="535" class="body">borrows</text>
+  <line x1="860" y1="525" x2="1035" y2="540" class="line" marker-end="url(#arrow)"/><text x="920" y="510" class="body">managed by</text>
+  <line x1="195" y1="350" x2="585" y2="390" class="line dash" marker-end="url(#arrow)"/><text x="340" y="360" class="body">references book</text>
+  <line x1="205" y1="695" x2="515" y2="825" class="line" marker-end="url(#arrow)"/><text x="260" y="775" class="body">creates</text>
+  <line x1="1185" y1="450" x2="345" y2="540" class="line dash" marker-end="url(#arrow)"/><text x="950" y="435" class="body">extends Member</text>
+  <line x1="1010" y1="225" x2="860" y2="430" class="line dash" marker-end="url(#arrow)"/><text x="925" y="325" class="body">reads loan data</text>
+</svg>
