@@ -17,5 +17,3 @@ From this folder, run:
 ```bash
 node index.js
 ```
-
-No external packages are required.
