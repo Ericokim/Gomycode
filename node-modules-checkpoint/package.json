@@ -1,0 +1,9 @@
+{
+  "name": "node-modules-checkpoint",
+  "version": "1.0.0",
+  "description": "Node.js modules checkpoint using fs, a local module, and nodemailer.",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "nodemailer": "^8.0.7"
+  }
+}
