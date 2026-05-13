@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <section class="weather-panel">
+      <h1>Weather App</h1>
+
+      <form id="weather-form" class="search-form">
+        <label for="city-input">City name</label>
+        <div class="search-row">
+          <input id="city-input" type="text" placeholder="Enter a city" autocomplete="address-level2">
+          <button type="submit">Search</button>
+        </div>
+      </form>
+
+      <p id="message" class="message">Search for a city to load current weather from OpenWeather.</p>
+
+      <article id="weather-result" class="weather-card hidden">
+        <p id="location" class="location"></p>
+        <p id="temperature" class="temperature"></p>
+        <p id="description" class="description"></p>
+        <p id="condition" class="condition"></p>
+        <dl id="weather-details" class="weather-details"></dl>
+      </article>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
