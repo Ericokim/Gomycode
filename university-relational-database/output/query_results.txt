@@ -1,0 +1,35 @@
+SQL Fiddle:
+https://sqlfiddle.com/mysql/online-compiler?id=6efe6345-a954-486d-9c48-45329dbb9d94
+
+dbdiagram:
+https://dbdiagram.io/d/University-Relational-Database-6a0b2d249f1f8ec47b4299c7
+
+1. Students enrolled in "Database Systems"
+
+name
+Alice Smith
+Bob Johnson
+
+2. Courses with instructor names
+
+title               name
+Database Systems    Dr. Emily White
+Database Systems    Prof. John Black
+Calculus I          Dr. Emily White
+Physics I           Dr. Sarah Green
+
+3. Students not enrolled in any course
+
+name
+Diana Prince
+
+4. Updated student email
+
+student_id  name         email
+1           Alice Smith  alice_new@example.com
+
+5. Courses after deleting course ID 2
+
+course_id  title             credits
+1          Database Systems  3
+3          Physics I         4
