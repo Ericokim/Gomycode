@@ -1,0 +1,20 @@
+{
+  "name": "express-routing-checkpoint",
+  "version": "1.0.0",
+  "description": "Express routing checkpoint with working-hours middleware.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "express",
+    "routing",
+    "checkpoint"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.3"
+  }
+}
