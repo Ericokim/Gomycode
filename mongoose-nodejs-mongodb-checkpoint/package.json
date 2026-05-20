@@ -1,0 +1,19 @@
+{
+  "name": "mongoose-nodejs-mongodb-checkpoint",
+  "version": "1.0.0",
+  "description": "Mongoose and Node.js checkpoint project for MongoDB CRUD operations.",
+  "main": "index.js",
+  "scripts": {
+    "check": "node --check index.js && node --check models/person.js",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "mongodb": "^4.17.2",
+    "mongoose": "^6.13.9"
+  }
+}
