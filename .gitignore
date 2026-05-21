@@ -13,6 +13,7 @@ Thumbs.db
 *.swp
 *.swo
 *~
+/docs
 
 # Node modules
 node_modules/
