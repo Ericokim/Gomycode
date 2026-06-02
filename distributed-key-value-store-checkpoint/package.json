@@ -1,0 +1,17 @@
+{
+  "name": "distributed-key-value-store-checkpoint",
+  "version": "1.0.0",
+  "description": "Distributed key-value store simulation with consistent hashing and LRU caching.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "check": "node --check index.js"
+  },
+  "keywords": [
+    "distributed-systems",
+    "consistent-hashing",
+    "cache"
+  ],
+  "author": "",
+  "license": "ISC"
+}
