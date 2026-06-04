@@ -1,7 +1,7 @@
 export function Hero() {
   return (
-    <section className="grid overflow-hidden rounded-2xl bg-slate-900 text-white md:grid-cols-[minmax(0,1fr)_300px]">
-      <div className="px-5 py-5 sm:px-6">
+    <section className="grid overflow-hidden rounded-2xl bg-slate-900 text-white md:h-64 md:grid-cols-[minmax(0,1fr)_320px]">
+      <div className="flex h-full flex-col justify-center px-5 py-5 sm:px-6">
         <p className="mb-2 inline-flex w-fit rounded-full bg-amber-300 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-slate-900">
           New season essentials
         </p>
@@ -17,7 +17,7 @@ export function Hero() {
       </div>
 
       <img
-        className="hidden h-full min-h-44 w-full object-cover md:block"
+        className="hidden h-full w-full object-cover md:block"
         src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80"
         alt="Online shopping counter"
       />

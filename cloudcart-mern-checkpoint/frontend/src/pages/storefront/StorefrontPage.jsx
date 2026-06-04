@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Toast } from "../../components/shared/Toast";
 import { CartPanel } from "../../components/storefront/CartPanel";
 import { Hero } from "../../components/storefront/Hero";
@@ -11,46 +11,17 @@ import { getErrorMessage } from "../../lib/api/client";
 
 export function StorefrontPage() {
   const [customerName, setCustomerName] = useState("");
+  const [customerEmail, setCustomerEmail] = useState("");
+  const [customerPhone, setCustomerPhone] = useState("");
+  const [deliveryAddress, setDeliveryAddress] = useState("");
   const [filters, setFilters] = useState({
     search: "",
     sort: "newest",
     stock: "all"
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { isLoading, loadProducts, products, setToast, toast } = useProducts();
+  const { isLoading, loadProducts, products, setToast, toast } = useProducts(filters);
   const { addToCart, cart, clearCart, removeFromCart, total, updateQuantity } = useCart();
-
-  const filteredProducts = useMemo(() => {
-    const searchTerm = filters.search.trim().toLowerCase();
-
-    return [...products]
-      .filter((product) => {
-        const matchesSearch =
-          product.name.toLowerCase().includes(searchTerm) ||
-          product.description.toLowerCase().includes(searchTerm);
-        const matchesStock =
-          filters.stock === "all" ||
-          (filters.stock === "available" && product.stock > 0) ||
-          (filters.stock === "low" && product.stock > 0 && product.stock <= 5);
-
-        return matchesSearch && matchesStock;
-      })
-      .sort((first, second) => {
-        if (filters.sort === "price-low") {
-          return first.price - second.price;
-        }
-
-        if (filters.sort === "price-high") {
-          return second.price - first.price;
-        }
-
-        if (filters.sort === "name") {
-          return first.name.localeCompare(second.name);
-        }
-
-        return new Date(second.createdAt || 0) - new Date(first.createdAt || 0);
-      });
-  }, [filters, products]);
 
   function updateFilter(event) {
     const { name, value } = event.target;
@@ -63,9 +34,9 @@ export function StorefrontPage() {
   async function placeOrder(event) {
     event.preventDefault();
 
-    if (!customerName.trim() || cart.length === 0) {
+    if (!customerName.trim() || !customerEmail.trim() || !deliveryAddress.trim() || cart.length === 0) {
       setToast({
-        message: "Add your name and at least one product before placing an order.",
+        message: "Add your name, email, delivery address, and at least one product.",
         type: "error"
       });
       return;
@@ -76,7 +47,10 @@ export function StorefrontPage() {
 
     try {
       const order = await createOrder({
+        customerEmail,
         customerName,
+        customerPhone,
+        deliveryAddress,
         items: cart.map((item) => ({
           productId: item.productId,
           quantity: item.quantity
@@ -84,7 +58,10 @@ export function StorefrontPage() {
       });
 
       clearCart();
+      setCustomerEmail("");
       setCustomerName("");
+      setCustomerPhone("");
+      setDeliveryAddress("");
       setToast({
         message: `Order placed. Total: $${order.total.toFixed(2)}`,
         type: "success"
@@ -112,11 +89,11 @@ export function StorefrontPage() {
             isLoading={isLoading}
             onChange={updateFilter}
             onRefresh={loadProducts}
-            resultCount={filteredProducts.length}
+            resultCount={products.length}
           />
           <ProductGrid
             isLoading={isLoading}
-            products={filteredProducts}
+            products={products}
             onAddToCart={addToCart}
             onRefresh={loadProducts}
           />
@@ -125,8 +102,14 @@ export function StorefrontPage() {
           cart={cart}
           cartTotal={total}
           customerName={customerName}
+          customerEmail={customerEmail}
+          customerPhone={customerPhone}
+          deliveryAddress={deliveryAddress}
           isSubmitting={isSubmitting}
+          onCustomerEmailChange={setCustomerEmail}
           onCustomerNameChange={setCustomerName}
+          onCustomerPhoneChange={setCustomerPhone}
+          onDeliveryAddressChange={setDeliveryAddress}
           onPlaceOrder={placeOrder}
           onRemoveFromCart={removeFromCart}
           onUpdateQuantity={updateQuantity}

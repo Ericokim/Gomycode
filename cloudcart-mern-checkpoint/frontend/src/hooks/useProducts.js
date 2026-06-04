@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { getErrorMessage } from "../lib/api/client";
 import { getProducts } from "../lib/api/products";
 
-export function useProducts() {
+export function useProducts(filters) {
   const [isLoading, setIsLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [toast, setToast] = useState({ message: "", type: "info" });
@@ -11,7 +11,7 @@ export function useProducts() {
     setIsLoading(true);
 
     try {
-      const data = await getProducts();
+      const data = await getProducts(filters);
       setProducts(data);
       setToast({ message: "", type: "info" });
       setIsLoading(false);
@@ -27,10 +27,11 @@ export function useProducts() {
       });
       setIsLoading(false);
     }
-  }, []);
+  }, [filters]);
 
   useEffect(() => {
-    loadProducts(5);
+    const timeoutId = setTimeout(() => loadProducts(5), 250);
+    return () => clearTimeout(timeoutId);
   }, [loadProducts]);
 
   return { isLoading, loadProducts, products, setToast, toast };

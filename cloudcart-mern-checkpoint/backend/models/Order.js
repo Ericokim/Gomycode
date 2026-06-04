@@ -15,6 +15,10 @@ const orderItemSchema = new mongoose.Schema(
       type: Number,
       required: true
     },
+    image: {
+      type: String,
+      default: ""
+    },
     quantity: {
       type: Number,
       required: true,
@@ -27,6 +31,21 @@ const orderItemSchema = new mongoose.Schema(
 const orderSchema = new mongoose.Schema(
   {
     customerName: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    customerEmail: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    customerPhone: {
+      type: String,
+      default: "",
+      trim: true
+    },
+    deliveryAddress: {
       type: String,
       required: true,
       trim: true

@@ -27,6 +27,7 @@ function buildOrderItems(items, products, shouldUpdateStock = false) {
       product: product._id,
       name: product.name,
       price: product.price,
+      image: product.image,
       quantity
     };
   });
@@ -46,13 +47,16 @@ async function getOrders(req, res) {
 }
 
 async function createOrder(req, res) {
-  const { customerName, items } = req.body;
+  const { customerEmail, customerName, customerPhone, deliveryAddress, items } = req.body;
 
   if (isMemoryMode()) {
     const orderItems = buildOrderItems(items, memoryProducts, true);
     const order = {
       _id: `order-${Date.now()}`,
+      customerEmail,
       customerName,
+      customerPhone,
+      deliveryAddress,
       items: orderItems,
       total: calculateTotal(orderItems),
       createdAt: new Date().toISOString()
@@ -66,7 +70,10 @@ async function createOrder(req, res) {
   const products = await Product.find({ _id: { $in: productIds } });
   const orderItems = buildOrderItems(items, products);
   const order = await Order.create({
+    customerEmail,
     customerName,
+    customerPhone,
+    deliveryAddress,
     items: orderItems,
     total: calculateTotal(orderItems)
   });
@@ -81,4 +88,3 @@ async function createOrder(req, res) {
 }
 
 module.exports = { createOrder, getOrders };
-

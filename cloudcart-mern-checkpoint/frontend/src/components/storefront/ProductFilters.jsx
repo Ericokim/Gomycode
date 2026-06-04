@@ -45,7 +45,7 @@ export function ProductFilters({ filters, isLoading, onChange, onRefresh, result
             size={18}
           />
           <select
-            className="w-full appearance-none rounded-2xl border border-slate-200 bg-slate-50 px-11 py-3 text-sm outline-none transition focus:border-slate-900 focus:bg-white focus:ring-2 focus:ring-slate-200"
+            className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-3 pl-11 pr-4 text-sm outline-none transition focus:border-slate-900 focus:bg-white focus:ring-2 focus:ring-slate-200"
             name="stock"
             value={filters.stock}
             onChange={onChange}
