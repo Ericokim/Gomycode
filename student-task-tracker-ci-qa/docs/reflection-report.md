@@ -1,0 +1,7 @@
+# Reflection Report
+
+Learning Git, CI, and QA tools was challenging because each tool solves a different part of the development process. Git required careful thinking about branches, commits, and merge conflicts. At first, it can feel easier to edit files directly on one branch, but using feature branches made the work safer and more organized. CI was also new because it introduced the idea that code should be checked automatically before it is merged. Setting up tests, linting, and build steps showed how many small mistakes can be caught before they reach other team members.
+
+The CI pipeline helped streamline development by running the same checks every time code was pushed or a pull request was opened. This removed guesswork. Instead of asking whether the project still worked, students could see if linting, tests, and the build passed. When something failed, the pipeline gave a clear signal that the code needed attention before merging.
+
+Version control and QA practices improved collaboration because students could work on separate branches, review each other's pull requests, and keep the main branch stable. Unit tests made important app behavior easier to trust, while ESLint encouraged consistent code style. Code reviews also helped students explain their decisions and learn from feedback. Overall, these practices made the project more reliable, easier to understand, and closer to how real software teams work.
