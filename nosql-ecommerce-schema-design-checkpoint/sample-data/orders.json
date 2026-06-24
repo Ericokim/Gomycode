@@ -1,0 +1,89 @@
+[
+  {
+    "_id": "order_001",
+    "userId": "user_001",
+    "customer": {
+      "name": "Eric Kimani",
+      "email": "eric@example.com",
+      "phone": "+254700000000"
+    },
+    "items": [
+      {
+        "productId": "prod_001",
+        "name": "Wireless Mouse",
+        "categoryId": "cat_001",
+        "categoryName": "Computer Accessories",
+        "quantity": 2,
+        "unitPrice": 2500,
+        "totalPrice": 5000
+      },
+      {
+        "productId": "prod_002",
+        "name": "Mechanical Keyboard",
+        "categoryId": "cat_001",
+        "categoryName": "Computer Accessories",
+        "quantity": 1,
+        "unitPrice": 7200,
+        "totalPrice": 7200
+      }
+    ],
+    "payment": {
+      "method": "MPESA",
+      "status": "PAID",
+      "transactionId": "MPESA12345"
+    },
+    "delivery": {
+      "status": "PROCESSING",
+      "address": {
+        "street": "Westlands",
+        "city": "Nairobi",
+        "country": "Kenya"
+      },
+      "estimatedDeliveryDate": "2026-06-27"
+    },
+    "orderStatus": "CONFIRMED",
+    "totalAmount": 12200,
+    "currency": "KES",
+    "createdAt": "2026-06-24T10:20:00.000Z",
+    "updatedAt": "2026-06-24T10:20:00.000Z"
+  },
+  {
+    "_id": "order_002",
+    "userId": "user_002",
+    "customer": {
+      "name": "Amina Yusuf",
+      "email": "amina@example.com",
+      "phone": "+254711111111"
+    },
+    "items": [
+      {
+        "productId": "prod_003",
+        "name": "USB-C Laptop Charger",
+        "categoryId": "cat_002",
+        "categoryName": "Chargers",
+        "quantity": 3,
+        "unitPrice": 3800,
+        "totalPrice": 11400
+      }
+    ],
+    "payment": {
+      "method": "CARD",
+      "status": "PAID",
+      "transactionId": "CARD98765"
+    },
+    "delivery": {
+      "status": "SHIPPED",
+      "address": {
+        "street": "Kilimani",
+        "city": "Nairobi",
+        "country": "Kenya"
+      },
+      "estimatedDeliveryDate": "2026-06-26"
+    },
+    "orderStatus": "CONFIRMED",
+    "totalAmount": 11400,
+    "currency": "KES",
+    "createdAt": "2026-06-24T11:10:00.000Z",
+    "updatedAt": "2026-06-24T11:30:00.000Z"
+  }
+]

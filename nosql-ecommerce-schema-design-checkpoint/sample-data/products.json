@@ -1,0 +1,47 @@
+[
+  {
+    "_id": "prod_001",
+    "name": "Wireless Mouse",
+    "description": "Ergonomic wireless mouse with long battery life",
+    "categoryId": "cat_001",
+    "categoryName": "Computer Accessories",
+    "brand": "Logitech",
+    "price": 2500,
+    "currency": "KES",
+    "stock": 120,
+    "tags": ["mouse", "wireless", "computer accessories"],
+    "status": "ACTIVE",
+    "createdAt": "2026-06-24T10:00:00.000Z",
+    "updatedAt": "2026-06-24T10:00:00.000Z"
+  },
+  {
+    "_id": "prod_002",
+    "name": "Mechanical Keyboard",
+    "description": "Compact mechanical keyboard with blue switches",
+    "categoryId": "cat_001",
+    "categoryName": "Computer Accessories",
+    "brand": "KeyLab",
+    "price": 7200,
+    "currency": "KES",
+    "stock": 55,
+    "tags": ["keyboard", "mechanical", "computer accessories"],
+    "status": "ACTIVE",
+    "createdAt": "2026-06-24T10:00:00.000Z",
+    "updatedAt": "2026-06-24T10:00:00.000Z"
+  },
+  {
+    "_id": "prod_003",
+    "name": "USB-C Laptop Charger",
+    "description": "Fast charging 65W USB-C laptop charger",
+    "categoryId": "cat_002",
+    "categoryName": "Chargers",
+    "brand": "PowerMax",
+    "price": 3800,
+    "currency": "KES",
+    "stock": 80,
+    "tags": ["charger", "usb-c", "laptop"],
+    "status": "ACTIVE",
+    "createdAt": "2026-06-24T10:00:00.000Z",
+    "updatedAt": "2026-06-24T10:00:00.000Z"
+  }
+]

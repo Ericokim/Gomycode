@@ -1,0 +1,17 @@
+{
+  "name": "nosql-ecommerce-schema-design-checkpoint",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Runnable MongoDB project for designing NoSQL databases based on multiple requirement views.",
+  "type": "module",
+  "scripts": {
+    "seed": "node src/seed.js",
+    "indexes": "node src/createIndexes.js",
+    "queries": "node src/queries.js",
+    "analytics": "node src/analyticsAggregation.js",
+    "demo": "npm run seed && npm run indexes && npm run queries && npm run analytics"
+  },
+  "dependencies": {
+    "mongodb": "^6.12.0"
+  }
+}

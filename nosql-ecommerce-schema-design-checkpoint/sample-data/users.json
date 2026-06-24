@@ -1,0 +1,34 @@
+[
+  {
+    "_id": "user_001",
+    "name": "Eric Kimani",
+    "email": "eric@example.com",
+    "phone": "+254700000000",
+    "addresses": [
+      {
+        "addressId": "addr_001",
+        "street": "Westlands",
+        "city": "Nairobi",
+        "country": "Kenya",
+        "isDefault": true
+      }
+    ],
+    "createdAt": "2026-06-24T10:00:00.000Z"
+  },
+  {
+    "_id": "user_002",
+    "name": "Amina Yusuf",
+    "email": "amina@example.com",
+    "phone": "+254711111111",
+    "addresses": [
+      {
+        "addressId": "addr_002",
+        "street": "Kilimani",
+        "city": "Nairobi",
+        "country": "Kenya",
+        "isDefault": true
+      }
+    ],
+    "createdAt": "2026-06-24T10:05:00.000Z"
+  }
+]
