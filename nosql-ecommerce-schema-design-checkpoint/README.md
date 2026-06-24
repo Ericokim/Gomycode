@@ -24,8 +24,6 @@ nosql-ecommerce-schema-design-checkpoint/
   schemas/
     initial-schema.md
     refactored-schema.md
-  examples/
-    sample-documents.json
   reports/
     reflection.md
 ```

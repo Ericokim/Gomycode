@@ -1,221 +1,76 @@
 # Refactored NoSQL Schema Design
 
-## 1. New Requirements
+## New Requirements
 
-The company now needs:
+- Run analytical queries for product trends and sales.
+- Guarantee high availability and partition tolerance.
+- Scale reads and writes as traffic grows.
+- Use sharding, replication, and denormalization where useful.
 
-- Large-scale analytical queries for product trends and sales data.
-- High availability and partition tolerance.
-- Better write scaling as user traffic grows.
-- A schema that uses sharding, replication, and denormalization.
+## Refactored Strategy
 
-## 2. Refactored Strategy
+The refactor keeps operational data separate from analytical data.
 
-The refactor separates operational workloads from analytical workloads.
-
-| Workload | Store | Purpose |
+| Workload | Store / Collection | Strategy |
 | --- | --- | --- |
-| Product browsing | Document database + search index | Fast customer-facing reads |
-| Checkout and orders | Sharded document database | High-throughput transactional writes |
-| Carts and cache | Key-value store | Low-latency temporary state |
-| Analytics events | Wide-column database | High-volume append-only events |
-| Reports | Denormalized summary collections | Fast trend and sales queries |
+| Product browsing | `products` | read replicas, category/text indexes |
+| Checkout | `orders` | sharded writes, majority write concern |
+| Order activity | `order_events` | append-only event records |
+| Customer history | `customer_orders` | denormalized read model |
+| Product analytics | `daily_product_sales` | pre-aggregated sales by product |
+| Category analytics | `daily_category_sales` | pre-aggregated sales by category |
+| Trend reporting | `product_trends` | weekly pre-computed trend scores |
 
-## 3. Sharding
+## Sharding
 
-### Products
-
-```text
-collection: products
-shard key: categoryId + hashed(_id)
-```
-
-Reason:
-
-- Category browsing remains efficient.
-- Large categories are still distributed across shards.
-
-### Orders
-
-```text
-collection: orders
-shard key: hashed(orderNumber)
-```
-
-Reason:
-
-- Checkout writes are distributed evenly.
-- Hot customers or popular regions do not overload one shard.
-
-Secondary index for customer history:
-
-```text
-compound: customer.userId, createdAt desc
-```
-
-### Analytics Events
-
-```text
-table: order_events_by_day
-partition key: eventDate
-clustering keys: eventTime, orderId
-```
-
-Reason:
-
-- Event data is append-heavy.
-- Daily partitions support trend analysis.
-- Wide-column storage handles high write volume.
-
-## 4. Replication
-
-| Data | Replication Strategy | Consistency Choice |
+| Data | Shard Key | Reason |
 | --- | --- | --- |
-| Products | Multi-region read replicas | Eventual consistency |
-| Orders | Replica set with majority writes | Stronger consistency |
-| Inventory reservations | Majority writes / atomic updates | Strong consistency |
-| Carts | Redis replication with TTL | Eventual recovery |
-| Analytics events | Multi-node replication | Eventual consistency |
+| `products` | `categoryId + hashed(_id)` | keeps category browsing useful while spreading large categories |
+| `orders` | `hashed(_id)` or hashed order number | distributes high-volume checkout writes |
+| analytics events | `event_date` partition | supports daily trend scans and high write volume |
 
-This design prioritizes strict consistency only where it matters most: orders, payments, delivery status, and inventory reservations.
+Customer order history is still handled through the `userId + createdAt` index and `customer_orders` read model.
 
-## 5. Denormalized Analytics Collections
+## Replication
 
-### Daily Sales by Product
+| Data | Consistency Choice | Reason |
+| --- | --- | --- |
+| Products | eventual consistency | product browsing tolerates slight lag |
+| Search index | eventual consistency | search can lag behind writes briefly |
+| Orders | stronger consistency / majority writes | payment and delivery state must be reliable |
+| Inventory reservations | strong consistency / atomic writes | prevents overselling |
+| Analytics | eventual consistency | reports can lag without affecting checkout |
 
-```json
-{
-  "_id": "2026-06-24:prod_2001",
-  "date": "2026-06-24",
-  "productId": "prod_2001",
-  "sku": "LAP-14-PRO",
-  "productName": "14 inch Pro Laptop",
-  "categoryId": "cat_laptops",
-  "categoryName": "Laptops",
-  "unitsSold": 246,
-  "grossRevenue": 295200,
-  "orderCount": 238,
-  "refundCount": 3,
-  "updatedAt": "2026-06-24T23:59:00Z"
-}
-```
+## Denormalized Analytics
 
-Indexes:
+The analytics script [src/analyticsAggregation.js](../src/analyticsAggregation.js) builds these collections from `orders`:
 
-```text
-compound: date, grossRevenue desc
-compound: categoryId, date
-compound: productId, date
-```
+| Collection | Query Supported |
+| --- | --- |
+| `daily_product_sales` | units sold and revenue by product per day |
+| `daily_category_sales` | units sold and revenue by category per day |
+| `product_trends` | weekly views, cart adds, sales, revenue, and trend score |
 
-### Daily Sales by Category
+This prevents dashboards from scanning the raw `orders` collection.
 
-```json
-{
-  "_id": "2026-06-24:cat_laptops",
-  "date": "2026-06-24",
-  "categoryId": "cat_laptops",
-  "categoryName": "Laptops",
-  "unitsSold": 1250,
-  "grossRevenue": 1489000,
-  "orderCount": 1108,
-  "topProducts": [
-    {
-      "productId": "prod_2001",
-      "name": "14 inch Pro Laptop",
-      "unitsSold": 246,
-      "grossRevenue": 295200
-    }
-  ],
-  "updatedAt": "2026-06-24T23:59:00Z"
-}
-```
-
-Indexes:
-
-```text
-compound: date, grossRevenue desc
-compound: categoryId, date
-```
-
-### Customer Order Summary
-
-```json
-{
-  "_id": "user_1001",
-  "customerId": "user_1001",
-  "totalOrders": 14,
-  "lifetimeValue": 3840,
-  "lastOrderAt": "2026-06-24T09:15:00Z",
-  "favoriteCategories": [
-    {
-      "categoryId": "cat_laptops",
-      "orderCount": 5
-    }
-  ],
-  "updatedAt": "2026-06-24T09:20:00Z"
-}
-```
-
-## 6. Wide-Column Event Table
-
-```text
-table: order_events_by_day
-
-partition key:
-- event_date
-
-clustering columns:
-- event_time
-- order_id
-
-columns:
-- customer_id
-- event_type
-- product_ids
-- category_ids
-- order_total
-- payment_status
-- delivery_status
-```
-
-Example row:
-
-```json
-{
-  "event_date": "2026-06-24",
-  "event_time": "2026-06-24T09:16:00Z",
-  "order_id": "order_3001",
-  "customer_id": "user_1001",
-  "event_type": "order_paid",
-  "product_ids": ["prod_2001"],
-  "category_ids": ["cat_laptops"],
-  "order_total": 1215,
-  "payment_status": "paid",
-  "delivery_status": "processing"
-}
-```
-
-## 7. Refactored Write Flow
+## Refactored Write Flow
 
 1. Customer checks out.
-2. API reserves inventory with an atomic write.
-3. API creates the order with majority write concern.
-4. API publishes `order_created` and `order_paid` events.
-5. Event consumers write to the analytics event table.
-6. Aggregation workers update daily product and category summaries.
-7. Search and reporting views update asynchronously.
+2. API creates an order document.
+3. API writes an order event.
+4. Customer history view is updated.
+5. Background analytics job updates pre-aggregated reporting collections.
+6. Product search and dashboard views update asynchronously.
 
-## 8. Trade-Offs
+## Trade-Offs
 
 | Refactor | Improvement | Trade-off |
 | --- | --- | --- |
-| Sharding | More write throughput and partition tolerance | Cross-shard queries are harder |
-| Replication | Higher availability and fault tolerance | Replication lag can happen |
-| Denormalization | Faster analytics queries | Duplicate data must be maintained |
-| Event-driven analytics | Checkout stays fast | Reports become eventually consistent |
-| Wide-column events | Handles high-velocity data | Adds another database model |
+| Sharding | higher throughput and partition tolerance | cross-shard queries are harder |
+| Replication | better availability | replicas can briefly lag |
+| Denormalization | faster reads and analytics | duplicated data must be maintained |
+| Event-driven analytics | checkout stays fast | reports become eventually consistent |
 
-## 9. Result
+## Result
 
-The refactored design improves scalability by distributing products, orders, and analytics events across nodes. It improves availability through replication. It improves query performance by using separate schemas for operational queries and analytical queries.
+The refactored design improves scalability by distributing operational writes, improves availability through replication, and improves query performance by separating transactional and analytical workloads.

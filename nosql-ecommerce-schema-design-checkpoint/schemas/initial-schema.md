@@ -1,227 +1,60 @@
 # Initial NoSQL Schema Design
 
-## 1. Requirements
+## Requirements
 
-The initial database must support:
+- Users can browse and search products.
+- Orders store customer details, purchased items, payment state, and delivery status.
+- The system must handle high write volume during checkout.
+- Indexes should match common query patterns.
 
-- Product browsing and full-text search.
-- Order storage with customer information, purchased items, payment details, and delivery status.
-- Thousands of transactions per second.
-- Efficient indexes based on query patterns.
-- A reasonable balance between scalability and consistency.
+## Selected Model
 
-## 2. Chosen Design
+The core design uses a **document database** such as MongoDB. Products, users, and orders are stored as JSON-like documents. Carts are treated as key-value data, and product search uses a text/search index.
 
-The main database model is **document-based** because products and orders naturally fit as JSON-like documents. The design also uses:
+## Collections
 
-- **Search index** for product search.
-- **Key-value store** for carts and sessions.
-- **Atomic reservation records** for inventory consistency.
+| Collection | Purpose | Source Example |
+| --- | --- | --- |
+| `users` | Customer profile and addresses | `sample-data/users.json` |
+| `products` | Catalog, search fields, category, price, stock | `sample-data/products.json` |
+| `orders` | Customer, items, payment, delivery, order status | `sample-data/orders.json` |
+| `order_events` | Append-only order activity for audit and analytics | generated in `src/seed.js` |
+| `customer_orders` | Denormalized customer order history view | generated in `src/seed.js` |
 
-## 3. Key Entities
+## Relationships
 
-| Entity | Purpose |
-| --- | --- |
-| `users` | Customer profile and default address |
-| `products` | Product catalog, pricing, search fields, inventory summary |
-| `orders` | Customer order snapshot, purchased items, payment, delivery status |
-| `inventory_reservations` | Temporary inventory locks during checkout |
-| `carts` | Fast temporary shopping cart state |
+- Orders reference `userId` but embed a customer snapshot so old orders remain accurate if the user profile changes.
+- Orders embed item snapshots so historical prices and product names remain accurate.
+- Product documents keep category data close to the product for fast browsing.
+- `customer_orders` duplicates key order fields for quick customer order history reads.
 
-## 4. Users Collection
+## Indexes
 
-```json
-{
-  "_id": "user_1001",
-  "name": "Amina Yusuf",
-  "email": "amina@example.com",
-  "phone": "+254700000000",
-  "defaultAddress": {
-    "line1": "Westlands",
-    "city": "Nairobi",
-    "country": "KE"
-  },
-  "createdAt": "2026-06-24T09:00:00Z",
-  "updatedAt": "2026-06-24T09:00:00Z"
-}
-```
+The runnable index definitions live in [src/createIndexes.js](../src/createIndexes.js).
 
-Indexes:
+| Query Pattern | Collection | Index |
+| --- | --- | --- |
+| Find user by email | `users` | unique `email` |
+| Search products | `products` | text index on `name`, `description`, `tags` |
+| Browse active products by category and price | `products` | `categoryId`, `status`, `price` |
+| Filter products by brand | `products` | `brand`, `status` |
+| View customer order history | `orders` | `userId`, `createdAt` |
+| Track delivery status | `orders` | `delivery.status`, `updatedAt` |
+| Read customer order summary | `customer_orders` | `userId`, `createdAt` |
 
-```text
-unique: email
-index: phone
-```
+## Consistency and Scalability
 
-## 5. Products Collection
+- Product browsing can use eventual consistency because small catalog delays are acceptable.
+- Order creation needs stronger consistency because payment, stock, and delivery status must be correct.
+- Order documents are write-optimized by keeping only necessary indexes.
+- Customer and item snapshots avoid joins during order reads.
+- Carts are best stored as key-value records with TTL because they are temporary and frequently updated.
 
-```json
-{
-  "_id": "prod_2001",
-  "sku": "LAP-14-PRO",
-  "name": "14 inch Pro Laptop",
-  "description": "Lightweight laptop for software development and design work.",
-  "categoryId": "cat_laptops",
-  "categoryName": "Laptops",
-  "brand": "TechPro",
-  "tags": ["laptop", "developer", "portable"],
-  "price": 1200,
-  "currency": "USD",
-  "status": "active",
-  "inventory": {
-    "available": 48,
-    "reserved": 2,
-    "warehouseId": "wh_nairobi_01"
-  },
-  "rating": {
-    "average": 4.6,
-    "count": 183
-  },
-  "createdAt": "2026-06-24T09:00:00Z",
-  "updatedAt": "2026-06-24T09:00:00Z"
-}
-```
-
-Indexes:
-
-```text
-unique: sku
-compound: categoryId, status, price
-compound: brand, status
-full-text: name, description, tags, categoryName, brand
-```
-
-Why this works:
-
-- Product browsing is fast because category and brand filters are indexed.
-- Product search is fast because text-heavy fields are stored in a search index.
-- Product reads can be eventually consistent because small catalog delays are acceptable.
-
-## 6. Orders Collection
-
-Orders embed customer and item snapshots. This preserves historical accuracy even if user addresses or product prices change later.
-
-```json
-{
-  "_id": "order_3001",
-  "orderNumber": "ORD-20260624-000001",
-  "customer": {
-    "userId": "user_1001",
-    "name": "Amina Yusuf",
-    "email": "amina@example.com",
-    "phone": "+254700000000"
-  },
-  "items": [
-    {
-      "productId": "prod_2001",
-      "sku": "LAP-14-PRO",
-      "name": "14 inch Pro Laptop",
-      "quantity": 1,
-      "unitPrice": 1200,
-      "lineTotal": 1200
-    }
-  ],
-  "totals": {
-    "subtotal": 1200,
-    "deliveryFee": 15,
-    "tax": 0,
-    "grandTotal": 1215,
-    "currency": "USD"
-  },
-  "payment": {
-    "status": "paid",
-    "provider": "card",
-    "transactionId": "txn_9001"
-  },
-  "delivery": {
-    "status": "processing",
-    "address": {
-      "line1": "Westlands",
-      "city": "Nairobi",
-      "country": "KE"
-    },
-    "trackingNumber": null
-  },
-  "statusHistory": [
-    {
-      "status": "created",
-      "at": "2026-06-24T09:15:00Z"
-    },
-    {
-      "status": "paid",
-      "at": "2026-06-24T09:16:00Z"
-    }
-  ],
-  "createdAt": "2026-06-24T09:15:00Z",
-  "updatedAt": "2026-06-24T09:16:00Z"
-}
-```
-
-Indexes:
-
-```text
-unique: orderNumber
-compound: customer.userId, createdAt desc
-compound: delivery.status, updatedAt
-compound: payment.status, createdAt
-```
-
-Consistency strategy:
-
-1. Reserve inventory atomically.
-2. Create order document.
-3. Confirm payment.
-4. Update delivery status.
-5. Release reservation if payment fails.
-
-Order data needs stronger consistency than product data because customers must see correct payment and delivery states.
-
-## 7. Inventory Reservations Collection
-
-```json
-{
-  "_id": "reservation_4001",
-  "productId": "prod_2001",
-  "orderId": "order_3001",
-  "quantity": 1,
-  "status": "confirmed",
-  "expiresAt": "2026-06-24T09:30:00Z",
-  "createdAt": "2026-06-24T09:15:00Z"
-}
-```
-
-Indexes:
-
-```text
-compound: productId, status
-ttl: expiresAt
-```
-
-## 8. Carts as Key-Value Data
-
-```json
-{
-  "key": "cart:user_1001",
-  "ttlSeconds": 604800,
-  "value": {
-    "items": [
-      {
-        "productId": "prod_2001",
-        "quantity": 1
-      }
-    ],
-    "updatedAt": "2026-06-24T09:10:00Z"
-  }
-}
-```
-
-Key-value storage works well here because carts are frequently updated, temporary, and usually retrieved by one user id.
-
-## 9. Initial Scalability Decisions
+## Initial Trade-Offs
 
 | Decision | Benefit | Trade-off |
 | --- | --- | --- |
-| Embed item snapshots in orders | Fast order reads and historical accuracy | Duplicates product data |
-| Use search index for products | Fast full-text search | Search results may lag slightly |
-| Use Redis-style carts | Very fast cart access | Cart data is less queryable |
-| Use only necessary order indexes | Faster writes | Fewer ad hoc order queries |
+| Embed item snapshots in orders | Fast reads and historical accuracy | Product data is duplicated |
+| Use text indexes for search | Fast product discovery | Search index may lag briefly |
+| Denormalize customer order view | Fast order history | Extra write/update path |
+| Keep order indexes focused | Better write throughput | Less flexible ad hoc querying |
