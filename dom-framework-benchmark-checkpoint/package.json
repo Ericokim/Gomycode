@@ -1,0 +1,44 @@
+{
+  "name": "dom-framework-benchmark-checkpoint",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "DOM benchmark comparison for React, Angular, Vue, and Svelte todo apps.",
+  "engines": {
+    "node": ">=20 <23"
+  },
+  "scripts": {
+    "dev:react": "vite --config apps/react/vite.config.js",
+    "dev:vue": "vite --config apps/vue/vite.config.js",
+    "dev:svelte": "vite --config apps/svelte/vite.config.js",
+    "dev:angular": "ng serve angular-benchmark --configuration development",
+    "build:react": "vite build --config apps/react/vite.config.js",
+    "build:vue": "vite build --config apps/vue/vite.config.js",
+    "build:svelte": "vite build --config apps/svelte/vite.config.js",
+    "build:angular": "ng build angular-benchmark",
+    "build": "npm run build:react && npm run build:vue && npm run build:svelte && npm run build:angular"
+  },
+  "dependencies": {
+    "@angular/animations": "^18.2.0",
+    "@angular/common": "^18.2.0",
+    "@angular/compiler": "^18.2.0",
+    "@angular/core": "^18.2.0",
+    "@angular/forms": "^18.2.0",
+    "@angular/platform-browser": "^18.2.0",
+    "@angular/router": "^18.2.0",
+    "@sveltejs/vite-plugin-svelte": "^3.1.2",
+    "@vitejs/plugin-react": "^4.3.0",
+    "@vitejs/plugin-vue": "^5.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "svelte": "^4.2.19",
+    "typescript": "^5.5.0",
+    "vite": "^5.4.0",
+    "vue": "^3.5.0",
+    "zone.js": "^0.14.10"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^18.2.0",
+    "@angular/cli": "^18.2.0"
+  }
+}

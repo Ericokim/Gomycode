@@ -1,0 +1,5 @@
+node_modules/
+dist/
+.angular/
+.vite/
+.DS_Store

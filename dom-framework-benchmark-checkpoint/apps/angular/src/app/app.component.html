@@ -1,0 +1,53 @@
+<main class="app-shell">
+  <section class="workspace">
+    <header class="header">
+      <div>
+        <h1>Angular DOM Benchmark</h1>
+        <p>Todo list using Angular standalone components, ngFor, ngIf, ngModel, and trackBy.</p>
+      </div>
+      <button class="secondary" type="button" (click)="tasks = []">Clear</button>
+    </header>
+
+    <form class="panel controls" (ngSubmit)="addTask()">
+      <label>
+        Task name
+        <input name="taskName" [(ngModel)]="name" placeholder="Add a task" />
+      </label>
+      <label>
+        Priority
+        <select name="priority" [(ngModel)]="priority">
+          <option *ngFor="let item of priorities" [value]="item">{{ item }}</option>
+        </select>
+      </label>
+      <button type="submit">Add task</button>
+    </form>
+
+    <section class="panel bench-controls">
+      <button class="secondary" type="button" (click)="renderTasks(100)">Render 100</button>
+      <button class="secondary" type="button" (click)="renderTasks(500)">Render 500</button>
+      <button class="secondary" type="button" (click)="renderTasks(1000)">Render 1000</button>
+      <button class="secondary" type="button" (click)="updateFifty()" [disabled]="tasks.length < 50">Update 50</button>
+      <button class="danger" type="button" (click)="deleteFifty()" [disabled]="tasks.length < 50">Delete 50</button>
+    </section>
+
+    <section class="panel metrics">
+      <div class="metric"><span>Tasks</span><strong>{{ tasks.length }}</strong></div>
+      <div class="metric"><span>Render ms</span><strong>{{ metrics.render }}</strong></div>
+      <div class="metric"><span>Update ms</span><strong>{{ metrics.update }}</strong></div>
+      <div class="metric"><span>Delete ms</span><strong>{{ metrics.deletion }}</strong></div>
+    </section>
+
+    <section class="panel">
+      <div class="task-list">
+        <p *ngIf="tasks.length === 0" class="empty">No tasks yet.</p>
+        <article *ngFor="let task of tasks; trackBy: trackTask" class="task-row">
+          <input [(ngModel)]="task.name" [name]="'task-' + task.id" />
+          <select [(ngModel)]="task.priority" [name]="'priority-' + task.id">
+            <option *ngFor="let item of priorities" [value]="item">{{ item }}</option>
+          </select>
+          <button class="danger" type="button" (click)="removeTask(task.id)">Remove</button>
+        </article>
+      </div>
+    </section>
+  </section>
+</main>
